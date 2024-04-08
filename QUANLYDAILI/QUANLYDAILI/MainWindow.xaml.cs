@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Data.SqlClient;
 namespace QUANLYDAILI
 {
     /// <summary>
@@ -20,9 +20,97 @@ namespace QUANLYDAILI
     /// </summary>
     public partial class MainWindow : Window
     {
+        String cntString = @"Data Source=MSI\AN;Initial Catalog=QUANLYDAILI;Integrated Security=True";
+        SqlConnection sqlCon = null;
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        private void usernameTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if(usernameTextBox.Text == "Username")
+            {
+                usernameTextBox.Text = "";
+            }
+        }
+
+        private void passwordBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (passwordBox.Password == "Password")
+            {
+                passwordBox.Password = "";
+            }
+        }
+
+        private void OpenConnection()
+        {
+            try
+            {   
+                if(sqlCon == null)
+                {
+                    sqlCon = new SqlConnection(cntString);
+                }
+                if(sqlCon.State == System.Data.ConnectionState.Closed)
+                {
+                    sqlCon.Open();
+                    MessageBox.Show("Connect to database success");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void CloseConnection()
+        {
+            try
+            {
+                if(sqlCon != null && sqlCon.State == System.Data.ConnectionState.Open)
+                {
+                    sqlCon.Close();
+                    MessageBox.Show("Disconnect to database success");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (usernameTextBox.Text.Trim() != "" && passwordBox.Password.Trim() != "")
+            {
+                string query = $"SELECT COUNT(*) FROM [USERS] WHERE Username = '{usernameTextBox.Text.Trim()}' AND Password = '{passwordBox.Password.Trim()}'";
+                try
+                {
+                    OpenConnection();
+
+                    SqlCommand sqlCmd = new SqlCommand();
+                    sqlCmd.CommandText = query;
+                    sqlCmd.Connection = sqlCon;
+
+                    int count = (int)sqlCmd.ExecuteScalar();
+                    if(count > 0)
+                    {
+                        //Login success
+                    }
+                    else
+                    {
+                        MessageBox.Show("Username or password is not correct!!");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    CloseConnection();
+                }
+            }
         }
     }
 }
