@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using QUANLYDAILI.Utils;
+
 namespace QUANLYDAILI
 {
     /// <summary>
@@ -20,8 +22,7 @@ namespace QUANLYDAILI
     /// </summary>
     public partial class MainWindow : Window
     {
-        String cntString = @"Data Source=MSI\AN;Initial Catalog=QUANLYDAILI;Integrated Security=True";
-        SqlConnection sqlCon = null;
+        private DatabaseConnector dbConnector = new DatabaseConnector();
         public MainWindow()
         {
             InitializeComponent();
@@ -47,41 +48,6 @@ namespace QUANLYDAILI
             passwordBox.BorderBrush = Brushes.Gray;
             errorMessagelogin.Visibility = Visibility.Collapsed;
         }
-
-        private void OpenConnection()
-        {
-            try
-            {   
-                if(sqlCon == null)
-                {
-                    sqlCon = new SqlConnection(cntString);
-                }
-                if(sqlCon.State == System.Data.ConnectionState.Closed)
-                {
-                    sqlCon.Open();
-                    //MessageBox.Show("Connect to database success");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-        private void CloseConnection()
-        {
-            try
-            {
-                if(sqlCon != null && sqlCon.State == System.Data.ConnectionState.Open)
-                {
-                    sqlCon.Close();
-                    //MessageBox.Show("Disconnect to database success");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
             if (usernameTextBox.Text.Trim() != "" && passwordBox.Password.Trim() != "")
@@ -89,11 +55,11 @@ namespace QUANLYDAILI
                 string query = $"SELECT COUNT(*) FROM [USERS] WHERE Username = '{usernameTextBox.Text.Trim()}' AND Password = '{passwordBox.Password.Trim()}'";
                 try
                 {
-                    OpenConnection();
+                    dbConnector.OpenConnection();
 
                     SqlCommand sqlCmd = new SqlCommand();
                     sqlCmd.CommandText = query;
-                    sqlCmd.Connection = sqlCon;
+                    sqlCmd.Connection = dbConnector.sqlCon;
 
                     int count = (int)sqlCmd.ExecuteScalar();
                     if(count > 0)
@@ -106,9 +72,7 @@ namespace QUANLYDAILI
                         usernameTextBox.BorderBrush = Brushes.Red;
                         passwordBox.BorderBrush = Brushes.Red;
                         errorMessagelogin.Visibility = Visibility.Visible;
-                      
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -116,7 +80,7 @@ namespace QUANLYDAILI
                 }
                 finally
                 {
-                    CloseConnection();
+                    dbConnector.CloseConnection();
                 }
             }
         }
