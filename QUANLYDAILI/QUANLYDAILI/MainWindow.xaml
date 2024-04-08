@@ -8,6 +8,7 @@
         Title="MainWindow"
         Height="663"
         Width="800">
+
     <Grid RenderTransformOrigin="0.497,0.508"
           Background="#F0F8FF"
           Margin="0,0,0,0">
@@ -15,6 +16,7 @@
             <ColumnDefinition Width="0*" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+
         <Border Grid.Column="1"
                 Width="450"
                 Height="400"
@@ -69,6 +71,7 @@
                              FontSize="16"
                              Width="410"
                              GotFocus="passwordBox_GotFocus" />
+                <TextBlock x:Name="errorMessagelogin" Foreground="Red" Margin="0,10,0,0" Text="Username or password is not correct" Visibility="Collapsed"></TextBlock>
                 <Button x:Name="LoginBtn"
                         Content="Login"
                         Cursor="Hand"
@@ -80,7 +83,6 @@
                         FontSize="16"
                         FontWeight="SemiBold"
                         Click="LoginBtn_Click">
-
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Template">
@@ -106,17 +108,11 @@
                         </Style>
                     </Button.Style>
                 </Button>
+
             </StackPanel>
         </Border>
 
 
     </Grid>
-    <!--<StackPanel>
-        <TextBlock TextWrapping="Wrap" Text="User Name" FontSize="14" FontWeight="SemiBold"/>
-        <TextBlock TextWrapping="Wrap" Text="Login" FontSize="22" FontWeight="Bold"/>
-        <TextBox x:Name="usernameTextBox" Padding="4,4,10,4" BorderThickness="0,0,0,1" TextAlignment="Left" TextWrapping="Wrap" Text="Username" Width="288" FontSize="14"/>
-        <TextBlock TextWrapping="Wrap" Text="Password" FontSize="14" FontWeight="SemiBold"/>
-        <TextBox x:Name="passwordTextBox" Padding="4,4,10,4" BorderThickness="0,0,0,1" TextAlignment="Left" TextWrapping="Wrap" Text="Password" Width="288" FontSize="14"/>
 
-    </StackPanel>-->
 </Window>

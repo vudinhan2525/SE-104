@@ -34,6 +34,8 @@ namespace QUANLYDAILI
             {
                 usernameTextBox.Text = "";
             }
+            usernameTextBox.BorderBrush = Brushes.Gray;
+            errorMessagelogin.Visibility = Visibility.Collapsed;
         }
 
         private void passwordBox_GotFocus(object sender, RoutedEventArgs e)
@@ -42,6 +44,8 @@ namespace QUANLYDAILI
             {
                 passwordBox.Password = "";
             }
+            passwordBox.BorderBrush = Brushes.Gray;
+            errorMessagelogin.Visibility = Visibility.Collapsed;
         }
 
         private void OpenConnection()
@@ -55,7 +59,7 @@ namespace QUANLYDAILI
                 if(sqlCon.State == System.Data.ConnectionState.Closed)
                 {
                     sqlCon.Open();
-                    MessageBox.Show("Connect to database success");
+                    //MessageBox.Show("Connect to database success");
                 }
             }
             catch (Exception ex)
@@ -70,7 +74,7 @@ namespace QUANLYDAILI
                 if(sqlCon != null && sqlCon.State == System.Data.ConnectionState.Open)
                 {
                     sqlCon.Close();
-                    MessageBox.Show("Disconnect to database success");
+                    //MessageBox.Show("Disconnect to database success");
                 }
             }
             catch (Exception ex)
@@ -97,8 +101,12 @@ namespace QUANLYDAILI
                         //Login success
                     }
                     else
-                    {
-                        MessageBox.Show("Username or password is not correct!!");
+                    {   
+                        //Login failed
+                        usernameTextBox.BorderBrush = Brushes.Red;
+                        passwordBox.BorderBrush = Brushes.Red;
+                        errorMessagelogin.Visibility = Visibility.Visible;
+                      
                     }
 
                 }
