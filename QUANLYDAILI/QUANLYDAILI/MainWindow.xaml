@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:QUANLYDAILI"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="663"
-        Width="800">
+        Height="700"
+        Width="1000"
+        >
     <Grid>
 
         <Frame x:Name="Main"

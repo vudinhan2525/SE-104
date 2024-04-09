@@ -27,8 +27,8 @@ namespace QUANLYDAILI
         public MainWindow()
         {
             InitializeComponent();
-            var loginPage = new LoginPage(Main);
-            Main.Content = loginPage;
+            var mainPage = new MainPage();
+            Main.Content = mainPage;
         }
 
     }

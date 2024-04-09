@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QUANLYDAILI"
       mc:Ignorable="d" d:DesignWidth="800"
-      Title="LoginPage" Height="578" 
+      Title="LoginPage" 
         >
 
     <Grid 
@@ -17,7 +17,8 @@
                 Visibility="Visible"
                 CornerRadius="12"
                 Width="450"
-                Margin="151,124,151,123">
+                Margin="175,124,175,133"
+                KeyDown="loginPage_KeyDown">
             <StackPanel  Width="400"
                          Height="400"
                          HorizontalAlignment="Center"
@@ -78,7 +79,7 @@
                         Foreground="White"
                         Background="Black"
                         Margin="0,25"
-                        Height="35"
+                        Height="40"
                         Width="300"
                         FontSize="16"
                         FontWeight="SemiBold"

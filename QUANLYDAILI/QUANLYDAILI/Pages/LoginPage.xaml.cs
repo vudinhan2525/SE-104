@@ -2,6 +2,7 @@
 using System.Data.SqlClient;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using QUANLYDAILI.Utils;
 
@@ -39,6 +40,17 @@ namespace QUANLYDAILI
             errorMessagelogin.Visibility = Visibility.Collapsed;
         }
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            handleLogin();
+        }
+        private void loginPage_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                handleLogin();
+            }
+        }
+        private void handleLogin()
         {
             if (usernameTextBox.Text.Trim() != "" && passwordBox.Password.Trim() != "")
             {
