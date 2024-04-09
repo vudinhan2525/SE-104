@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\admin\Documents\Nhapmoncnpm\QUANLYDAILI\QUANLYDAILI\App.xaml
-11407045341
+3-1668591349
 
-61298468227
+8-905774011
 195-1036776884
-MainWindow.xaml;
+MainWindow.xaml;Pages\LoginPage.xaml;Pages\MainPage.xaml;
 
 False
 

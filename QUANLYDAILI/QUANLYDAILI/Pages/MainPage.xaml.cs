@@ -12,24 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data.SqlClient;
-using QUANLYDAILI.Utils;
 
 namespace QUANLYDAILI
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainPage : Page
     {
-        private DatabaseConnector dbConnector = new DatabaseConnector();
-      
-        public MainWindow()
+        public MainPage()
         {
             InitializeComponent();
-            var loginPage = new LoginPage(Main);
-            Main.Content = loginPage;
         }
-
     }
 }
