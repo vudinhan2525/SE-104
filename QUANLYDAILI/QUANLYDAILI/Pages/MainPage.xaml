@@ -6,15 +6,88 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:QUANLYDAILI"
       mc:Ignorable="d"
-      d:DesignHeight="450"
-      d:DesignWidth="800"
-      Title="MainPage">
+      Title="MainPage"
+      Height ="626" Width="1076">
+    <Border Background="#ccccdb" CornerRadius="30" >
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <!-- Left Menu -->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-    <Grid Background="White">
-        <TextBlock HorizontalAlignment="Left"
-                   Margin="198,137,0,0"
-                   TextWrapping="Wrap"
-                   Text="MainPage"
-                   VerticalAlignment="Top" />
-    </Grid>
+                <Border Grid.Row="1" Background="#096120" CornerRadius="0 50 0 30" Margin="0,29,0,0">
+                    <DockPanel>
+                        <!-- Titles -->
+                        <TextBlock Text="Quản lý các đại lý" Foreground="White" FontSize="22" FontWeight="SemiBold"
+                               DockPanel.Dock ="Top" TextAlignment="Center" Margin="0,25,0,10"/>
+                        <!-- Seperator -->
+                        <Separator Margin ="25" DockPanel.Dock ="Top" Background="Black" Height="1"/>
+                        <!--Menu Button -->
+                        <!-- Home -->
+                        <StackPanel DockPanel.Dock="Top">
+                            <Button x:Name="HomeBtn" Margin ="10,0,10,0" Height="40" Background="#096120" BorderThickness="1,1,1,1" BorderBrush="#FF210E0E" Click="HomeBtn_Click" GotFocus="Button_GotFocus" LostFocus="Button_LostFocus">
+                                <StackPanel Orientation="Horizontal" Height="36" MinWidth="70">
+                                    <TextBlock Text ="Home" Width="111" LineHeight="14" Height="32" TextAlignment="Center" RenderTransformOrigin="0.5,0.742" Foreground="#FFF5F1F1" FontWeight="Bold" FontSize="16"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <!--Agents-->
+                        <StackPanel DockPanel.Dock="Top">
+                            <Button x:Name="AgentBtn" Margin ="10,10,10,0" Height="40" Background="#096120" BorderThickness="1,1,1,1" BorderBrush="#FF210E0E" Click="AgentBtn_Click" GotFocus="Button_GotFocus" LostFocus="Button_LostFocus">
+                                <StackPanel Orientation="Horizontal" Height="36" MinWidth="70">
+                                    <TextBlock Text ="Agent" Width="111" LineHeight="14" Height="32" TextAlignment="Center" RenderTransformOrigin="0.5,0.742" Foreground="#FFF5F1F1" FontWeight="Bold" FontSize="16"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <!-- Goods -->
+                        <StackPanel DockPanel.Dock="Top">
+                            <Button x:Name="GoodsBtn" Margin ="10,10,10,0" Height="40" Background="#096120" BorderThickness="1,1,1,1" BorderBrush="#FF210E0E" Click="GoodsBtn_Click" GotFocus="Button_GotFocus" LostFocus="Button_LostFocus">
+                                <StackPanel Orientation="Horizontal" Height="36" MinWidth="70">
+                                    <TextBlock Text ="Goods" Width="111" LineHeight="14" Height="32" TextAlignment="Center" RenderTransformOrigin="0.5,0.742" Foreground="#FFF5F1F1" FontWeight="Bold" FontSize="16"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                    </DockPanel>
+                </Border>
+
+
+            </Grid>
+            <!-- Main Section -->
+
+            <Grid Grid.Column="1" Margin="30 20 20 20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <!-- Search -->
+                <Grid Width="300" HorizontalAlignment="Left">
+                    <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground ="Black" IsHitTestVisible="False"
+                               Panel.ZIndex="1" Text="Search..." Visibility="Visible"/>
+                    <TextBox x:Name="txtSearch"/>
+                </Grid>
+                <!--Page Title -->
+                <TextBlock Text="Test" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin=" 0,20,0,0"
+                           HorizontalAlignment="Left" Foreground="Black"/>
+                <!--Main Content -->
+                <Grid Width="587" HorizontalAlignment="Left" Margin="-27,31,0,-20" Grid.RowSpan="6" Grid.Row="1">
+                    <Frame x:Name="mainMenu" Margin="0,0,-275,10"/>
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+    </Border>
+
+
 </Page>
