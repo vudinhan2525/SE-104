@@ -90,7 +90,7 @@
                     <Button Content="Order" Width="71"/>
                 </StackPanel>
             </Grid>
-            <DataGrid CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="GoodsDataGrid">
+            <DataGrid Visibility="Visible" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="GoodsDataGrid" AutoGenerateColumns="False">
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn CanUserResize="False" Width="auto">
                         <DataGridCheckBoxColumn.HeaderTemplate>
@@ -100,24 +100,17 @@
                         </DataGridCheckBoxColumn.HeaderTemplate>
                     </DataGridCheckBoxColumn>
 
-                    <DataGridTextColumn Header="#" Width="auto"/>
-                    <DataGridTemplateColumn Header="Goods" Width="*">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="Red">
-                                        <TextBlock Text="..." VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="Wheat" Margin="0,0,0,1"/>
-                                    </Border>
-                                    <TextBlock Text="..." VerticalAlignment="Center"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-  
-                    <DataGridTextColumn Header="Type" IsReadOnly ="true" Width="*"/>
-                    <DataGridTextColumn Header="Value" Width="*" IsReadOnly ="true"/>
-                    <DataGridTextColumn Header="Unit" Width="*" IsReadOnly ="true"/>
-                    <DataGridTextColumn Header="Quantity" Width="*" IsReadOnly ="true"/>
+                    <DataGridTextColumn Header="#" Width="Auto" Binding="{Binding Column1}" />
+                    <DataGridTextColumn Header="MaMatHang" Width="*" Binding="{Binding MaMatHang}" />
+                    <DataGridTextColumn Header="TenMatHang" Width="*" Binding="{Binding TenMatHang}" />
+                    <DataGridTextColumn Header="Gia" Width="*" Binding="{Binding Gia}" />
+                    <DataGridTextColumn Header="SoLuong" Width="*" Binding="{Binding SoLuong}" />
+                    <DataGridTextColumn Header="DonViTinh" Width="*" Binding="{Binding DonViTinh}" />
+
+                   
+                    
+
+
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
