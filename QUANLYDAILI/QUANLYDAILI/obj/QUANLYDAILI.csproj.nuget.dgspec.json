@@ -1,24 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\Documents\\Nhapmoncnpm\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\QUANLYDAILI.csproj": {}
+    "G:\\hoc\\Nam 2\\Nhap Mon CNPM\\Code git\\10.4\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\QUANLYDAILI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\Documents\\Nhapmoncnpm\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\QUANLYDAILI.csproj": {
+    "G:\\hoc\\Nam 2\\Nhap Mon CNPM\\Code git\\10.4\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\QUANLYDAILI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\Documents\\Nhapmoncnpm\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\QUANLYDAILI.csproj",
+        "projectUniqueName": "G:\\hoc\\Nam 2\\Nhap Mon CNPM\\Code git\\10.4\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\QUANLYDAILI.csproj",
         "projectName": "QUANLYDAILI",
-        "projectPath": "C:\\Users\\admin\\Documents\\Nhapmoncnpm\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\QUANLYDAILI.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\Documents\\Nhapmoncnpm\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\obj\\",
+        "projectPath": "G:\\hoc\\Nam 2\\Nhap Mon CNPM\\Code git\\10.4\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\QUANLYDAILI.csproj",
+        "packagesPath": "C:\\Users\\Ryzen 5 2600\\.nuget\\packages\\",
+        "outputPath": "G:\\hoc\\Nam 2\\Nhap Mon CNPM\\Code git\\10.4\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Ryzen 5 2600\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net6.0-windows7.0"
+          "net6.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -51,7 +55,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -63,7 +68,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
