@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
+using QUANLYDAILI.Utils;
 
 namespace QUANLYDAILI.Pages
 {
@@ -22,24 +23,21 @@ namespace QUANLYDAILI.Pages
     /// </summary>
     public partial class GoodsPage : Page
     {
-
+        private DatabaseConnector dbConnector = new DatabaseConnector();
         public GoodsPage()
         {
             InitializeComponent();
-            LoadGoodsData();
+            //LoadGoodsData();
         }
         private void LoadGoodsData()
         {
-            string connectionString = @"Data Source=DESKTOP-PEGO4F4;Initial Catalog=DaiLy;Integrated Security=True";
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
+            dbConnector.OpenConnection();
 
                 // Tạo câu truy vấn SQL để lấy dữ liệu từ bảng hoặc chế độ xem trong cơ sở dữ liệu của bạn
                 string query = "SELECT * FROM MatHang";
 
                 // Thực hiện truy vấn SQL để lấy dữ liệu từ cơ sở dữ liệu
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, dbConnector.sqlCon))
                 {
                     // Sử dụng SqlDataReader để đọc dữ liệu từ cơ sở dữ liệu
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -52,7 +50,7 @@ namespace QUANLYDAILI.Pages
                         GoodsDataGrid.ItemsSource = dataTable.DefaultView;
                     }
                 }
-            }
+            dbConnector.CloseConnection();
         }
     }
 }
