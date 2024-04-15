@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\admin\Documents\Nhapmoncnpm\SE-104\QUANLYDAILI\QUANLYDAILI\obj\Debug\net6.0-windows\
+G:\hoc\Nam 2\Nhap Mon CNPM\TEst\SE-104\QUANLYDAILI\QUANLYDAILI\obj\Debug\net6.0-windows\
 QUANLYDAILI
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-C:\Users\admin\Documents\Nhapmoncnpm\SE-104\QUANLYDAILI\QUANLYDAILI\App.xaml
-51966164021
+G:\hoc\Nam 2\Nhap Mon CNPM\TEst\SE-104\QUANLYDAILI\QUANLYDAILI\App.xaml
+7-244390357
 
-10-1480053159
-195-1036776884
-MainWindow.xaml;Pages\AgentPage.xaml;Pages\GoodsPage.xaml;Pages\LoginPage.xaml;Pages\MainPage.xaml;
+14-339299718
+1951942137896
+MainWindow.xaml;Pages\AgentPage.xaml;Pages\GoodsImport.xaml;Pages\GoodsPage.xaml;Pages\ImportsHistory.xaml;Pages\LoginPage.xaml;Pages\MainPage.xaml;
 
-False
+True
 

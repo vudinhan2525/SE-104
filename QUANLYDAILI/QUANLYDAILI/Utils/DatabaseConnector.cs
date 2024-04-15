@@ -6,7 +6,7 @@ namespace QUANLYDAILI.Utils
     public class DatabaseConnector
     {
         // Đổi = connection string của mỗi người
-        private readonly string cntString = @"Data Source=MSI\AN;Initial Catalog=QUANLYDAILI;Integrated Security=True";
+        private readonly string cntString = @"Data Source=DESKTOP-PEGO4F4;Initial Catalog=DaiLy;Integrated Security=True";
         public SqlConnection sqlCon = null;
 
         public void OpenConnection()
@@ -22,6 +22,7 @@ namespace QUANLYDAILI.Utils
                     sqlCon.Open();
                     //MessageBox.Show("Connect to database success");
                 }
+
             }
             catch (Exception ex)
             {
@@ -44,5 +45,6 @@ namespace QUANLYDAILI.Utils
                 throw ex;
             }
         }
+     
     }
 }

@@ -1,4 +1,4 @@
-﻿<Page x:Class="QUANLYDAILI.Pages.GoodsPage"
+﻿<Page x:Class="QUANLYDAILI.Pages.ImportsHistory"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:QUANLYDAILI.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="GoodsPage">
+      Title="ImportsHistory">
+
     <Page.Resources>
         <Style x:Key="DataGridRowStyle1" TargetType="{x:Type DataGridRow}">
             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
@@ -63,10 +64,14 @@
                 <Border Grid.Column="1" Background="#2f5242" Margin="0,0,0,0" CornerRadius="30,30,0,0">
                     <DockPanel >
                         <!-- Tittles -->
-                        <TextBlock Text="Danh Sách Hàng Hóa (Goods)" Foreground="White" FontSize="32" 
-                               DockPanel.Dock ="Top" TextAlignment="Left" Margin="10,0,0,0" Height="60"/>
+                        <TextBlock Text="Lịch sử mua hàng (Import History)" Foreground="White" FontSize="32" 
+                           DockPanel.Dock ="Top" TextAlignment="Left" Margin="10,0,0,0" Height="60"/>
                         <!-- Add Button -->
-                        
+                        <Button x:Name="ImportsGoodsBtn" Height="36" Width="224" Margin ="500,0,0,0" RenderTransformOrigin="0.5,0.5" DockPanel.Dock = "Right" Click="ImportsGoodsBtn_Click">
+                            <StackPanel Orientation="Horizontal" Height="14">
+                                <TextBlock Text="Nhập hàng mới"/>
+                            </StackPanel>
+                        </Button>
 
                     </DockPanel>
                 </Border>
@@ -97,15 +102,17 @@
                     </DataGridCheckBoxColumn>
 
                     <DataGridTextColumn Header="#" Width="Auto" Binding="{Binding Column1}" />
+                    <DataGridTextColumn Header="MaPhieuNhap" Width="*" Binding="{Binding MaPhieuNhap}" />
+                    <DataGridTextColumn Header="NgayLapPhieu" Width="*" Binding="{Binding NgayLapPhieu}" />
                     <DataGridTextColumn Header="MaMatHang" Width="*" Binding="{Binding MaMatHang}" />
-                    <DataGridTextColumn Header="TenMatHang" Width="*" Binding="{Binding TenMatHang}" />
-                    <DataGridTextColumn Header="Gia" Width="*" Binding="{Binding Gia}" />
-                    <DataGridTextColumn Header="SoLuong" Width="*" Binding="{Binding SoLuong}" />
+                    <DataGridTextColumn Header="DonGia" Width="*" Binding="{Binding DonGia}" />
                     <DataGridTextColumn Header="DonViTinh" Width="*" Binding="{Binding DonViTinh}" />
+                    <DataGridTextColumn Header="SoLuong" Width="*" Binding="{Binding SoLuong}" />
+                    <DataGridTextColumn Header="ThanhTien" Width="*" Binding="{Binding ThanhTien}" />
                 </DataGrid.Columns>
             </DataGrid>
             <Grid>
-                <Frame x:Name="goodsFrame" Margin="0,0,0,-347"/>
+                <Frame x:Name="ImportFrame" Margin="0,0,0,-347"/>
             </Grid>
         </Grid>
     </Border>

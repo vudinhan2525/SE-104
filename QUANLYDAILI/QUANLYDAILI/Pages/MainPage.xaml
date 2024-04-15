@@ -53,6 +53,14 @@
                                 </StackPanel>
                             </Button>
                         </StackPanel>
+                        <!-- Import -->
+                        <StackPanel DockPanel.Dock="Top">
+                            <Button x:Name="ImportBtn" Margin ="10,10,10,0" Height="40" Background="#096120" BorderThickness="1,1,1,1" BorderBrush="#FF210E0E" Click="ImportBtn_Click" GotFocus="Button_GotFocus" LostFocus="Button_LostFocus">
+                                <StackPanel Orientation="Horizontal" Height="36" MinWidth="70">
+                                    <TextBlock x:Name="ImportBtn1" Text ="Import" Width="111" LineHeight="14" Height="32" TextAlignment="Center" RenderTransformOrigin="0.5,0.742" Foreground="#FFF5F1F1" FontWeight="Bold" FontSize="16"/>
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
                     </DockPanel>
                 </Border>
 

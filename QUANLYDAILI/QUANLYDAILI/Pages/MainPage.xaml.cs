@@ -65,6 +65,10 @@ namespace QUANLYDAILI
         {
             mainMenu.Content = new MainPage();
         }
-        
+
+        private void ImportBtn_Click(object sender, RoutedEventArgs e)
+        {
+            mainMenu.Content = new ImportsHistory(); 
+        }
     }
 }

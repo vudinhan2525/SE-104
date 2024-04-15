@@ -27,7 +27,7 @@ namespace QUANLYDAILI.Pages
         public GoodsPage()
         {
             InitializeComponent();
-            //LoadGoodsData();
+            LoadGoodsData();
         }
         private void LoadGoodsData()
         {
@@ -52,5 +52,7 @@ namespace QUANLYDAILI.Pages
                 }
             dbConnector.CloseConnection();
         }
+
+     
     }
 }

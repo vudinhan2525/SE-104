@@ -29,6 +29,7 @@ namespace QUANLYDAILI
             InitializeComponent();
             var mainPage = new MainPage();
             Main.Content = mainPage;
+
         }
 
     }

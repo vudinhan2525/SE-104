@@ -1,0 +1,62 @@
+﻿<Page x:Class="QUANLYDAILI.Pages.GoodsImport"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:QUANLYDAILI.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GoodsImport">
+    <Page.DataContext>
+        <local:GoodsViewModel/>
+    </Page.DataContext>
+    <Grid HorizontalAlignment="Stretch" Background="#F0F8FF" Grid.Row ="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Border x:Name ="ImportPage" Margin="130,80,130,80" Background="#4b5450" Visibility="Visible" CornerRadius="20">
+
+            <StackPanel Grid.RowSpan="7" Margin="0,0,0,0" Height="300">
+                <!-- Titles -->
+                <TextBlock Text="Phiếu nhập hàng" TextAlignment="Center" FontWeight="SemiBold" Foreground="White" FontSize="28"/>
+                <!-- So Phieu va ngay lap -->
+                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
+                    <TextBlock Text="Số phiếu:" Foreground="White" Margin="0,0,5,0"/>
+                    <TextBox x:Name="SoPhieuTextBox" Text="{Binding Path= MaPhieuNhap}" Foreground="Black" Width="186"/>
+                </StackPanel>
+                <!-- Ngay lap phieu-->
+                <StackPanel Orientation="Horizontal" Margin="10,5,0,0">
+                    <TextBlock Text="Ngày lập phiếu: " Foreground="White" Margin="0,0,5,0"/>
+
+                    <DatePicker x:Name="NgayLapPhieuDatePicker" SelectedDate="{Binding NgayLapPhieu}" Foreground="Black" Width="200"/>
+                </StackPanel>
+                <!-- DataGrid-->
+                
+                <DataGrid Visibility="Visible" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
+                          RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="GoodImportedDataGrid"  Height="150" AutoGenerateColumns="False" ItemsSource="{Binding YourDataItems}">
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="MaMatHang" Width="*" Binding="{Binding Path=MaMatHang}" />
+                        <DataGridTextColumn Header="DonGia" Width="*" Binding="{Binding Path=DonGia}" />
+                        <DataGridTextColumn Header="DonViTinh" Width="*" Binding="{Binding Path=DonViTinh}" />
+                        <DataGridTextColumn Header="SoLuong" Width="*" Binding="{Binding Path=SoLuong}" />
+                        <DataGridTextColumn Header="ThanhTien" Width="*" Binding="{Binding Path=ThanhTien}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <!-- Tổng tiền -->
+                <TextBlock x:Name="TongTienTextBlock" Text="Tổng tiền: " TextAlignment="Right" Margin="0,0,0,0" Foreground="White"/>
+
+                <!-- Nút Save -->
+                <Button x:Name="SaveBtn" Content="Lưu" Click="SaveButton_Click" Width="100" Height="30" Margin="10"/>
+                
+            </StackPanel>
+
+        </Border>
+    </Grid>
+</Page>
