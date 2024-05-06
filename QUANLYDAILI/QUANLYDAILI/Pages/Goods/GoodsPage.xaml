@@ -65,43 +65,78 @@
                         <!-- Tittles -->
                         <TextBlock Text="Danh Sách Hàng Hóa (Goods)" Foreground="White" FontSize="32" 
                                DockPanel.Dock ="Top" TextAlignment="Left" Margin="10,0,0,0" Height="60"/>
-                        <!-- Add Button -->
-                        
+
 
                     </DockPanel>
                 </Border>
             </Grid>
             <!-- Main Content -->
-            <Grid Margin="0,5,0,309" Grid.Row="1">
+            <Grid Margin="0,5,0,196" Grid.Row="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition/>
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0 10 0 0">
-                    <Button Content="Order" Width="71"/>
+                <StackPanel Margin ="0,0,0,26">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25" MinHeight="198.96" />
+                            <RowDefinition Height="25" />
+                            <RowDefinition Height="25" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment ="Left"  Width="287" Margin="10,30,0,144">
+                            <TextBlock Text="Ma Mat hang: " Foreground="Black" Margin="0,0,5,0" Width="74" Visibility="Visible" />
+                            <TextBox x:Name="MaMatHangTxt" Text="{Binding Path= MaMatHang}" Foreground="Black" Width="205" Margin="0,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment ="Left"  Width="287" Margin="10,60,0,114">
+                            <TextBlock Text="Ten Mat hang: " Foreground="Black" Margin="0,0,5,0" Width="74" Visibility="Visible" />
+                            <TextBox x:Name="TenMatHangTxt" Text="{Binding Path= TenMatHang}" Foreground="Black" Width="205" Margin="0,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment ="Left" Margin="10,90,0,86" Width="287">
+                            <TextBlock Text="Don gia: " Foreground="Black" Margin="0,0,5,0" Width="74" Visibility="Visible" />
+                            <TextBox x:Name="DonGiaTxt" Text="{Binding Path= Gia }" Foreground="Black" Width="205" Margin="0,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment ="Left" Margin="335,30,0,144" Width="300">
+                            <TextBlock Text="So luong: " Foreground="Black" Margin="0,0,5,0" Width="74" Visibility="Visible" />
+                            <TextBox x:Name="SoLuongTxt" Text="{Binding Path= SoLuong }" Foreground="Black" Width="205" Margin="0,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment ="Left" Margin="335,60,0,114" Width="300">
+                            <TextBlock Text="Don Vi Tinh: " Foreground="Black" Margin="0,0,5,0" Width="74" Visibility="Visible" />
+                            <ComboBox x:Name="DVTTxt" Text="{Binding Path= DVT }" Foreground="Black" Width="205" Margin="0,0,0,0">
+                                <ComboBoxItem Content="Đơn vị"/>
+                                <ComboBoxItem Content="Kg"/>
+                                <ComboBoxItem Content="Lít"/>
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel  Width="156" HorizontalAlignment="Right" Margin="0,0,0,75">
+                            <!-- Add Button -->
+                            <Button x:Name="AddGoods" Content="Add" Width="60" Height="30" Margin="0,30,0,20" HorizontalAlignment="Right" VerticalAlignment="Center" Click="AddGoods_Click"/>
+                            <!-- Delete Button -->
+                            <Button x:Name="DeleteGoods" Content="Delete" Width="60" Height="30" Margin="30,0,0,20" HorizontalAlignment="Right" VerticalAlignment="Center" Click="DeleteGoodsBtn_Click"/>
+                        </StackPanel>
+                    </Grid>
                 </StackPanel>
-            </Grid>
-            <DataGrid Visibility="Visible" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="GoodsDataGrid" AutoGenerateColumns="False">
-                <DataGrid.Columns>
-                    <DataGridCheckBoxColumn CanUserResize="False" Width="auto">
-                        <DataGridCheckBoxColumn.HeaderTemplate>
-                            <DataTemplate>
-                                <CheckBox/>
-                            </DataTemplate>
-                        </DataGridCheckBoxColumn.HeaderTemplate>
-                    </DataGridCheckBoxColumn>
 
-                    <DataGridTextColumn Header="#" Width="Auto" Binding="{Binding Column1}" />
+            </Grid>
+            <DataGrid Visibility="Visible" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="1" x:Name="GoodsDataGrid" AutoGenerateColumns="False" Margin="0,150,0,0">
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn Header="Chọn" Binding="{Binding IsChecked, UpdateSourceTrigger=PropertyChanged}" Width="auto" />
                     <DataGridTextColumn Header="MaMatHang" Width="*" Binding="{Binding MaMatHang}" />
                     <DataGridTextColumn Header="TenMatHang" Width="*" Binding="{Binding TenMatHang}" />
                     <DataGridTextColumn Header="Gia" Width="*" Binding="{Binding Gia}" />
                     <DataGridTextColumn Header="SoLuong" Width="*" Binding="{Binding SoLuong}" />
                     <DataGridTextColumn Header="DonViTinh" Width="*" Binding="{Binding DonViTinh}" />
+                    <DataGridTemplateColumn Header="Sửa">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Sửa" Click="EditButton_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
             <Grid>

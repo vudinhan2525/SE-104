@@ -10,13 +10,13 @@
     <Compile Update="Pages\AgentPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\GoodsImport.xaml.cs">
+    <Compile Update="Pages\Goods\GoodsImport.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\GoodsPage.xaml.cs">
+    <Compile Update="Pages\Goods\GoodsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\ImportsHistory.xaml.cs">
+    <Compile Update="Pages\Goods\ImportsHistory.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\LoginPage.xaml.cs">
@@ -30,13 +30,13 @@
     <Page Update="Pages\AgentPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\GoodsImport.xaml">
+    <Page Update="Pages\Goods\GoodsImport.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\GoodsPage.xaml">
+    <Page Update="Pages\Goods\GoodsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\ImportsHistory.xaml">
+    <Page Update="Pages\Goods\ImportsHistory.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\LoginPage.xaml">

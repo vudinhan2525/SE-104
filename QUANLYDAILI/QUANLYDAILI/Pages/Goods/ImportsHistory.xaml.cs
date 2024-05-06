@@ -25,23 +25,22 @@ namespace QUANLYDAILI.Pages
     public partial class ImportsHistory : Page
     {
         private DatabaseConnector dbConnector = new DatabaseConnector();
+
         public ImportsHistory()
         {
             InitializeComponent();
             LoadImportData();
-           
+
+
+
         }
         private void ImportsGoodsBtn_Click(object sender, RoutedEventArgs e)
         {
          
             ImportFrame.Content = new GoodsImport();
-            
+            SendImportedDataToGoods();
         }
-        private void GoodsImport_DataSavedEvent(object sender, EventArgs e)
-        {
-            // Gọi phương thức để tải lại dữ liệu
-            LoadImportData();
-        }
+     
         private void LoadImportData()
         {
             dbConnector.OpenConnection();
@@ -61,9 +60,21 @@ namespace QUANLYDAILI.Pages
             }
             dbConnector.CloseConnection();
         }
+        private void SendImportedDataToGoods()
+        {
+            // Lấy MainFrame từ MainWindow
+            Frame mainFrame = ((MainWindow)Application.Current.MainWindow).GetMainFrame();
 
-   
-    
-    
+            // Tìm trang GoodsPage trong MainFrame
+            if (mainFrame != null)
+            {
+                if (mainFrame.Content is GoodsPage goodsPage)
+                {
+                    // Nếu tìm thấy trang GoodsPage, gọi phương thức cập nhật dữ liệu
+                    DataTable importedData = ((DataView)GoodsDataGrid.ItemsSource).ToTable();
+                    goodsPage.UpdateGoodsData(importedData);
+                }
+            }
+        }
     }
 }

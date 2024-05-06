@@ -8,4 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = QUANLYDAILI
-build_property.ProjectDir = G:\hoc\Nam 2\Nhap Mon CNPM\TEst\SE-104\QUANLYDAILI\QUANLYDAILI\
+build_property.ProjectDir = H:\Hoc\hoc\Nam 2\Nhap Mon CNPM\0501\SE-104\QUANLYDAILI\QUANLYDAILI\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

@@ -23,7 +23,10 @@ namespace QUANLYDAILI
     public partial class MainWindow : Window
     {
         private DatabaseConnector dbConnector = new DatabaseConnector();
-      
+        public Frame GetMainFrame()
+        {
+            return Main;
+        }
         public MainWindow()
         {
             InitializeComponent();
