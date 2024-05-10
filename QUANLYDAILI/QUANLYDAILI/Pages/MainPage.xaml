@@ -1,63 +1,222 @@
-﻿<Page 
-      x:Class="QUANLYDAILI.MainPage"
+﻿<Page x:Class="QUANLYDAILI.MainPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
       xmlns:local="clr-namespace:QUANLYDAILI"
       mc:Ignorable="d"
-      Title="MainPage"
-      >
-    <Border Background="#ccccdb" CornerRadius="30" >
+      Title="MainPage">
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="#ffffff" />
+            <!-- Default background color -->
+            <Setter Property="Foreground"
+                    Value="#000000" />
+            <!-- Default foreground color -->
+            <Setter Property="FontSize"
+                    Value="16" />
+            <!-- Default font size -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="7">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <!--<ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#f3f3f3" />
+                                <Setter Property="Foreground"
+                                        Value="#000000" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>-->
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Border Background="#ccccdb">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="250"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="250" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <!-- Left Menu -->
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition  Height="auto"/>
-                    <RowDefinition MinHeight="600" Height="*"/>
+                    <RowDefinition  Height="auto" />
+                    <RowDefinition MinHeight="600"
+                                   Height="*" />
                 </Grid.RowDefinitions>
 
-                <Border Grid.Row="1" Background="#096120" CornerRadius="0 50 0 30" Margin="0,29,0,0">
+                <Border Grid.Row="1"
+                        Background="#ffffff"
+                        CornerRadius="0 50 0 0"
+                        Margin="0,0,0,0">
                     <DockPanel>
                         <!-- Titles -->
-                        <TextBlock Text="Quản lý các đại lý" Foreground="White" FontSize="22" FontWeight="SemiBold"
-                               DockPanel.Dock ="Top" TextAlignment="Center" Margin="0,25,0,10"/>
+                        <TextBlock Text="Quản lý các đại lý"
+                                   Foreground="Black"
+                                   FontSize="22"
+                                   FontWeight="SemiBold"
+                                   DockPanel.Dock="Top"
+                                   TextAlignment="Center"
+                                   Margin="0,25,0,10" />
                         <!-- Seperator -->
-                        <Separator Margin ="25" DockPanel.Dock ="Top" Background="Black" Height="1"/>
+                        <Separator Margin="25"
+                                   DockPanel.Dock="Top"
+                                   Background="Black"
+                                   Height="1" />
                         <!--Menu Button -->
                         <!-- Home -->
                         <StackPanel DockPanel.Dock="Top">
-                            <Button x:Name="HomeBtn" Margin ="10,0,10,0" Height="40" Background="#096120" BorderThickness="1,1,1,1" BorderBrush="#FF210E0E" Click="HomeBtn_Click" GotFocus="Button_GotFocus" LostFocus="Button_LostFocus">
-                                <StackPanel Orientation="Horizontal" Height="36" MinWidth="70">
-                                    <TextBlock Text ="Home" Width="111" LineHeight="14" Height="32" TextAlignment="Center" RenderTransformOrigin="0.5,0.742" Foreground="#FFF5F1F1" FontWeight="Bold" FontSize="16"/>
+
+                            <Button x:Name="HomeBtn"
+                                    Cursor="Hand"
+                                    Margin="10,0,10,0"
+                                    Height="50"
+                                    GotFocus="Button_GotFocus"
+                                    LostFocus="Button_LostFocus"
+                                    MouseEnter="Button_MouseEnter"
+                                    MouseLeave="Button_MouseLeave"
+                                    Click="HomeBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius"
+                                                Value="7" />
+                                    </Style>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal"
+                                            Height="36"
+                                            MinWidth="70">
+                                    <fa:ImageAwesome Icon="Home"
+                                                     Width="22"
+                                                     Height="22"
+                                                     x:Name="HomeIcon" />
+                                    <TextBlock Text="Home"
+                                               Width="55"
+                                               LineHeight="32"
+                                               Height="32"
+                                               Margin="4,7,0,0"
+                                               TextAlignment="Center"
+                                               RenderTransformOrigin="0.5,0.742"
+                                               FontWeight="Bold"
+                                               FontSize="16" />
                                 </StackPanel>
                             </Button>
                         </StackPanel>
                         <!--Agents-->
                         <StackPanel DockPanel.Dock="Top">
-                            <Button x:Name="AgentBtn" Margin ="10,10,10,0" Height="40" Background="#096120" BorderThickness="1,1,1,1" BorderBrush="#FF210E0E" Click="AgentBtn_Click" GotFocus="Button_GotFocus" LostFocus="Button_LostFocus">
-                                <StackPanel Orientation="Horizontal" Height="36" MinWidth="70">
-                                    <TextBlock Text ="Agent" Width="111" LineHeight="14" Height="32" TextAlignment="Center" RenderTransformOrigin="0.5,0.742" Foreground="#FFF5F1F1" FontWeight="Bold" FontSize="16"/>
+                            <Button x:Name="AgentBtn"
+                                    Cursor="Hand"
+                                    MouseEnter="Button_MouseEnter"
+                                    MouseLeave="Button_MouseLeave"
+                                    Margin="10,10,10,0"
+                                    Height="50"
+                                    GotFocus="Button_GotFocus"
+                                    LostFocus="Button_LostFocus"
+                                    Click="AgentBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius"
+                                                Value="7" />
+                                    </Style>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal"
+                                            Height="36"
+                                            MinWidth="70">
+                                    <fa:ImageAwesome Icon="Dropbox"
+                                                     Width="22"
+                                                     Height="22"
+                                                     x:Name="AgentIcon" />
+                                    <TextBlock Text="Agents"
+                                               Width="55"
+                                               LineHeight="32"
+                                               Height="32"
+                                               Margin="4,7,0,0"
+                                               TextAlignment="Center"
+                                               RenderTransformOrigin="0.5,0.742"
+                                               FontWeight="Bold"
+                                               FontSize="16" />
                                 </StackPanel>
                             </Button>
                         </StackPanel>
                         <!-- Goods -->
                         <StackPanel DockPanel.Dock="Top">
-                            <Button x:Name="GoodsBtn" Margin ="10,10,10,0" Height="40" Background="#096120" BorderThickness="1,1,1,1" BorderBrush="#FF210E0E" Click="GoodsBtn_Click" GotFocus="Button_GotFocus" LostFocus="Button_LostFocus">
-                                <StackPanel Orientation="Horizontal" Height="36" MinWidth="70">
-                                    <TextBlock Text ="Goods" Width="111" LineHeight="14" Height="32" TextAlignment="Center" RenderTransformOrigin="0.5,0.742" Foreground="#FFF5F1F1" FontWeight="Bold" FontSize="16"/>
+                            <Button x:Name="GoodsBtn"
+                                    Cursor="Hand"
+                                    Margin="10,10,10,0"
+                                    Height="50"
+                                    MouseEnter="Button_MouseEnter"
+                                    MouseLeave="Button_MouseLeave"
+                                    GotFocus="Button_GotFocus"
+                                    LostFocus="Button_LostFocus"
+                                    Click="GoodsBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius"
+                                                Value="7" />
+                                    </Style>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal"
+                                            Height="36"
+                                            MinWidth="70">
+                                    <fa:ImageAwesome Icon="Archive"
+                                                     Width="22"
+                                                     Height="22"
+                                                     x:Name="GoodsIcon" />
+                                    <TextBlock Text="Goods"
+                                               Width="55"
+                                               LineHeight="32"
+                                               Height="32"
+                                               Margin="4,7,0,0"
+                                               TextAlignment="Center"
+                                               RenderTransformOrigin="0.5,0.742"
+                                               FontWeight="Bold"
+                                               FontSize="16" />
                                 </StackPanel>
                             </Button>
                         </StackPanel>
                         <!-- Import -->
                         <StackPanel DockPanel.Dock="Top">
-                            <Button x:Name="ImportBtn" Margin ="10,10,10,0" Height="40" Background="#096120" BorderThickness="1,1,1,1" BorderBrush="#FF210E0E" Click="ImportBtn_Click" GotFocus="Button_GotFocus" LostFocus="Button_LostFocus">
-                                <StackPanel Orientation="Horizontal" Height="36" MinWidth="70">
-                                    <TextBlock x:Name="ImportBtn1" Text ="Import" Width="111" LineHeight="14" Height="32" TextAlignment="Center" RenderTransformOrigin="0.5,0.742" Foreground="#FFF5F1F1" FontWeight="Bold" FontSize="16"/>
+
+                            <Button x:Name="ImportBtn"
+                                    Margin="10,10,10,0"
+                                    Cursor="Hand"
+                                    Height="50"
+                                    MouseEnter="Button_MouseEnter"
+                                    MouseLeave="Button_MouseLeave"
+                                    Click="ImportBtn_Click"
+                                    GotFocus="Button_GotFocus"
+                                    LostFocus="Button_LostFocus">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius"
+                                                Value="7" />
+                                    </Style>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal"
+                                            Height="36"
+                                            MinWidth="70">
+                                    <fa:ImageAwesome Icon="ArrowCircleDown"
+                                                     Width="22"
+                                                     Height="22"
+                                                     x:Name="ImportIcon" />
+                                    <TextBlock x:Name="ImportBtn1"
+                                               Text="Import"
+                                               Width="55"
+                                               LineHeight="32"
+                                               Margin="4,7,0,0"
+                                               Height="32"
+                                               TextAlignment="Center"
+                                               RenderTransformOrigin="0.5,0.742"
+                                               FontWeight="Bold"
+                                               FontSize="16" />
                                 </StackPanel>
                             </Button>
                         </StackPanel>
@@ -68,27 +227,42 @@
             </Grid>
             <!-- Main Section -->
 
-            <Grid Grid.Column="1" Margin="30 20 20 20">
+            <Grid Grid.Column="1"
+                  Margin="30 20 20 20">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <!-- Search -->
-                <Grid Width="300" HorizontalAlignment="Left">
-                    <TextBlock Margin="20 0" VerticalAlignment="Center" Foreground ="Black" IsHitTestVisible="False"
-                               Panel.ZIndex="1" Text="Search..." Visibility="Visible"/>
-                    <TextBox x:Name="txtSearch"/>
+                <Grid Width="300"
+                      HorizontalAlignment="Left">
+                    <TextBlock Margin="20 0"
+                               VerticalAlignment="Center"
+                               Foreground="Black"
+                               IsHitTestVisible="False"
+                               Panel.ZIndex="1"
+                               Text="Search..."
+                               Visibility="Visible" />
+                    <TextBox x:Name="txtSearch" />
                 </Grid>
                 <!--Page Title -->
-                <TextBlock Text="Test" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin=" 0,20,0,0"
-                           HorizontalAlignment="Left" Foreground="Black"/>
+                <TextBlock Text="Test"
+                           Grid.Row="1"
+                           FontSize="32"
+                           FontWeight="SemiBold"
+                           Margin=" 0,20,0,0"
+                           HorizontalAlignment="Left"
+                           Foreground="Black" />
                 <!--Main Content -->
-                <Grid  HorizontalAlignment="Stretch" Margin="-27,31,0,-20" Grid.RowSpan="6" Grid.Row="1">
+                <Grid  HorizontalAlignment="Stretch"
+                       Margin="-27,31,0,-20"
+                       Grid.RowSpan="6"
+                       Grid.Row="1">
                     <Frame x:Name="mainMenu"
                            NavigationUIVisibility="Hidden"
                            Margin="0,0,0,00" />
