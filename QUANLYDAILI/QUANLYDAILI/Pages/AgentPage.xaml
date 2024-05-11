@@ -4,14 +4,113 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QUANLYDAILI.Pages"
+      xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1200" d:DesignWidth="1200"
       Title="AgentPage">
-
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="#0194F3" />
+            <!-- Default background color -->
+            <Setter Property="Foreground"
+                    Value="#ffffff" />
+            <!-- Default foreground color -->
+            <Setter Property="FontSize"
+                    Value="16" />
+            <!-- Default font size -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="7">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#0078D4" />
+                               
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
-        
-        <TextBlock Text="My Agents" FontSize="32" Background="#FFBFACAC" Margin="0,0,0,394"/>
-        
+        <Border Padding="20,0,0,0"
+                Background="#F6F8FA">
+            <StackPanel>
+                <DockPanel>
+                    <TextBlock Text="Stores"
+                               FontWeight="SemiBold"
+                               FontSize="28"
+                               Margin="0,7,0,0" />
+                    <Button x:Name="ImportBtn"
+                            Cursor="Hand"
+                            Margin="0,0,40,0"
+                            HorizontalAlignment="Right"
+                            Height="50">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius"
+                                        Value="7" />
+                            </Style>
+                        </Button.Resources>
+                        <DockPanel Height="36"
+                                   Width="130">
+                            <fa:ImageAwesome Icon="PlusCircle"
+                                             Width="22"
+                                             Height="22"
+                                             Margin="10,0,0,0"
+                                             Foreground="#ffffff"
+                                             x:Name="ImportIcon" />
+                            <TextBlock x:Name="AddStoreBtn"
+                                       Text="Add Store"
+                                       Width="80"
+                                       LineHeight="32"
+                                       Margin="0,7,0,0"
+                                       Height="32"
+                                       TextAlignment="Center"
+                                       RenderTransformOrigin="0.5,0.742"
+                                       FontWeight="Bold"
+                                       FontSize="16" />
+                        </DockPanel>
+                    </Button>
+                </DockPanel>
+                <Grid Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel  Grid.Column="0" x:Name="stPanel">
+                        <Border CornerRadius="12,12,0,0" Height="200" >
+                            <Border.Background>
+                                <ImageBrush 
+                                            ImageSource="https://shopcartimg2.blob.core.windows.net/shopcartctn/logo.webp" />
+                            </Border.Background>
+                        </Border>
+                        <Border CornerRadius="0,0,12,12"
+                                BorderBrush="#cccccc"
+                                BorderThickness="1px"
+                                Background="White" Padding="25,12,25,12">
+                            <StackPanel>
+                                <TextBlock Text="ShopDunk Official Store" FontSize="22" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="Hoan Kiem, Ha Noi"></TextBlock>
+                                <TextBlock Text="Khoản nợ: 5.000.000 VND" Margin="0,7,0,4"
+                                           FontSize="14"
+                                           FontWeight="SemiBold"></TextBlock>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </Border>
+
     </Grid>
    
 </Page>

@@ -40,7 +40,7 @@
             </Setter>
         </Style>
     </Page.Resources>
-    <Border Background="#ccccdb">
+    <Border Background="#F6F8FA">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250" />

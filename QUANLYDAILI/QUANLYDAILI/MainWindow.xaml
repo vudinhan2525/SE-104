@@ -7,8 +7,8 @@
         xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="700"
-        Width="1000"
+        Height="1200"
+        Width="1200"
         >
     <Grid>
 
