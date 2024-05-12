@@ -40,6 +40,9 @@
             </Setter>
         </Style>
     </Page.Resources>
+    <ScrollViewer>
+        
+    
     <Grid>
         <Border Padding="20,0,0,0"
                 Background="#F6F8FA">
@@ -53,6 +56,7 @@
                             Cursor="Hand"
                             Margin="0,0,40,0"
                             HorizontalAlignment="Right"
+                            Click="handleShowAddForm"
                             Height="50">
                         <Button.Resources>
                             <Style TargetType="{x:Type Border}">
@@ -81,14 +85,20 @@
                         </DockPanel>
                     </Button>
                 </DockPanel>
-                <Grid Margin="0,20,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackPanel  Grid.Column="0" x:Name="stPanel">
-                        <Border CornerRadius="12,12,0,0" Height="200" >
+                <Grid Margin="0,0,0,0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="20px" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="20px" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="20px" />
+
+                        </Grid.ColumnDefinitions>
+                        <StackPanel  Grid.Column="0"
+                                     x:Name="stPanel1">
+                            <!--<Border CornerRadius="12,12,0,0" Height="200" >
                             <Border.Background>
                                 <ImageBrush 
                                             ImageSource="https://shopcartimg2.blob.core.windows.net/shopcartctn/logo.webp" />
@@ -97,20 +107,26 @@
                         <Border CornerRadius="0,0,12,12"
                                 BorderBrush="#cccccc"
                                 BorderThickness="1px"
-                                Background="White" Padding="25,12,25,12">
+                                Background="White" Padding="20,12,20,12">
                             <StackPanel>
                                 <TextBlock Text="ShopDunk Official Store" FontSize="22" FontWeight="Bold"></TextBlock>
-                                <TextBlock Text="Hoan Kiem, Ha Noi"></TextBlock>
+                                <TextBlock Text="Hoan Kiem, Ha Noi" ></TextBlock>
+                                <TextBlock Text="SDT : 0867880734"
+                                           Margin="0,5,0,0"></TextBlock>
                                 <TextBlock Text="Khoản nợ: 5.000.000 VND" Margin="0,7,0,4"
                                            FontSize="14"
                                            FontWeight="SemiBold"></TextBlock>
                             </StackPanel>
-                        </Border>
-                    </StackPanel>
-                </Grid>
+                        </Border>-->
+                        </StackPanel>
+                        <StackPanel  Grid.Column="2"
+                                     x:Name="stPanel2"></StackPanel>
+                        <StackPanel  Grid.Column="4"
+                                     x:Name="stPanel3"></StackPanel>
+                    </Grid>
             </StackPanel>
         </Border>
 
     </Grid>
-   
+    </ScrollViewer>
 </Page>

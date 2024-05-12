@@ -8,8 +8,8 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Height="1200"
-        Width="1200"
-        >
+        Width="1200">
+    
     <Grid>
 
         <Frame x:Name="Main"

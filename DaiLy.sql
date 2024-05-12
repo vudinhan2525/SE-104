@@ -69,6 +69,8 @@ CREATE TABLE PhieuThu(
 	SoTienThu money,
 	NgayThu datetime
 )
+Go
+
 
 ALTER TABLE PhieuNhap
 ADD CONSTRAINT PK_PhieuNhap PRIMARY KEY (MaPhieuNhap, MaMatHang)
@@ -92,7 +94,31 @@ ALTER TABLE PhieuThu
 ADD CONSTRAINT FK_DaiLy_PhieuThu
 FOREIGN KEY(MaDaiLy) REFERENCES DaiLy(MaDaiLy)
 
+
+
 INSERT INTO MatHang(MaMatHang, TenMatHang, Gia, SoLuong, DonViTinh)
 Values ('001','GTX-3060',6500000,'2','Don vi');
 
 SELECT * FROM MatHang
+GO
+
+CREATE TRIGGER UpdateGoodsQuantity 
+ON PhieuNhap
+AFTER INSERT 
+As	
+BEGIN
+    UPDATE MatHang
+    SET SoLuong = SoLuong + i.TongNhap
+	From MatHang
+	Inner Join (
+    SELECT MaMatHang, SUM(SoLuong) AS TongNhap
+        FROM inserted
+        GROUP BY MaMatHang
+    ) i ON MatHang.MaMatHang = i.MaMatHang;
+	UPDATE PhieuNhap
+    SET DonGia = mh.Gia,
+        DonViTinh = mh.DonViTinh
+    FROM PhieuNhap pn
+    INNER JOIN MatHang mh ON pn.MaMatHang = mh.MaMatHang
+    WHERE pn.MaPhieuNhap IN (SELECT MaPhieuNhap FROM inserted);
+END;

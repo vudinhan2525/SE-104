@@ -37,16 +37,25 @@
                     <DatePicker x:Name="NgayLapPhieuDatePicker" SelectedDate="{Binding NgayLapPhieu}" Foreground="Black" Width="200"/>
                 </StackPanel>
                 <!-- DataGrid-->
-                
-                <DataGrid Visibility="Visible" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" 
-                          RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="5" x:Name="GoodImportedDataGrid"  Height="150" AutoGenerateColumns="False" ItemsSource="{Binding YourDataItems}">
-                    <DataGrid.Columns>
 
-                        <DataGridTextColumn Header="MaMatHang" Width="*" Binding="{Binding Path=MaMatHang}" />
-                        <DataGridTextColumn Header="DonGia" Width="*" Binding="{Binding Path=DonGia}" />
-                        <DataGridTextColumn Header="DonViTinh" Width="*" Binding="{Binding Path=DonViTinh}" />
-                        <DataGridTextColumn Header="SoLuong" Width="*" Binding="{Binding Path=SoLuong}" />
-                        <DataGridTextColumn Header="ThanhTien" Width="*" Binding="{Binding Path=ThanhTien}" />
+                <DataGrid Visibility="Visible"
+                          CellStyle="{DynamicResource DataGridCellStyle1}"
+                          ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                          RowStyle="{DynamicResource DataGridRowStyle1}"
+                          Grid.Row="5"
+                          x:Name="GoodImportedDataGrid"
+                          Height="150"
+                          AutoGenerateColumns="False"
+                          ItemsSource="{Binding YourDataItems}"
+                          
+                          >
+                            
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="MaMatHang" Width="*" Binding="{Binding Path=MaMatHang}" IsReadOnly="False" />
+                        <DataGridTextColumn Header="DonGia" Width="*" Binding="{Binding Path=DonGia}" IsReadOnly="False"/>
+                        <DataGridTextColumn Header="DonViTinh" Width="*" Binding="{Binding Path=DonViTinh}" IsReadOnly="False"/>
+                        <DataGridTextColumn Header="SoLuong" Width="*" Binding="{Binding Path=SoLuong}" IsReadOnly="False"/>
+                        <DataGridTextColumn Header="ThanhTien" Width="*" Binding="{Binding Path=ThanhTien}" IsReadOnly="False"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <!-- Tổng tiền -->

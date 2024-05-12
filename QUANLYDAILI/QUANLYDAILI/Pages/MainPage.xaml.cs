@@ -99,7 +99,7 @@ namespace QUANLYDAILI
         }
         private void AgentBtn_Click(object sender, RoutedEventArgs e)
         {
-            mainMenu.Content = new AgentPage();
+            mainMenu.Content = new AgentPage(mainMenu);
         }
 
         private void GoodsBtn_Click(object sender, RoutedEventArgs e)

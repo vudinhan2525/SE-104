@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Pages\AddAgentPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\AgentPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -27,6 +30,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Pages\AddAgentPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Pages\AgentPage.xaml">
       <SubType>Designer</SubType>
     </Page>

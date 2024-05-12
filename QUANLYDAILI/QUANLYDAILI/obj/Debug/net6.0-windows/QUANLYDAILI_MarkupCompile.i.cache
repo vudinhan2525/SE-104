@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\admin\Documents\Github\Test\SE104\SE-104\QUANLYDAILI\QUANLYDAILI\App.xaml
-7-1556867882
+8-1740820083
 
-15443992075
+16-1979016094
 196978284962
-MainWindow.xaml;Pages\AgentPage.xaml;Pages\Goods\GoodsImport.xaml;Pages\Goods\GoodsPage.xaml;Pages\Goods\ImportsHistory.xaml;Pages\LoginPage.xaml;Pages\MainPage.xaml;
+MainWindow.xaml;Pages\AddAgentPage.xaml;Pages\AgentPage.xaml;Pages\Goods\GoodsImport.xaml;Pages\Goods\GoodsPage.xaml;Pages\Goods\ImportsHistory.xaml;Pages\LoginPage.xaml;Pages\MainPage.xaml;
 
 True
 

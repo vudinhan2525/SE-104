@@ -86,5 +86,7 @@ namespace QUANLYDAILI.Pages
             DataSavedEvent?.Invoke(this, EventArgs.Empty);
         }
 
+       
+
     }
 }
