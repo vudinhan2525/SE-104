@@ -81,11 +81,9 @@ namespace QUANLYDAILI.Pages
                     SqlCommand command = new SqlCommand(query, dbConnector.sqlCon);
                     command.Parameters.AddWithValue("@MaPhieuNhap", soPhieu);
                     command.Parameters.AddWithValue("@NgayLapPhieu", ngayLapPhieu);
-                    command.Parameters.AddWithValue("@MaMatHang", item.MaMatHang);
+                    command.Parameters.AddWithValue("@MaMatHang", item.MaMatHang); 
                     command.Parameters.AddWithValue("@DonGia", item.DonGia);
-
                     command.Parameters.AddWithValue("@SoLuong", item.SoLuong);
-
                     command.Parameters.AddWithValue("@ThanhTien", thanhtien);
                     command.ExecuteNonQuery();
                 }
