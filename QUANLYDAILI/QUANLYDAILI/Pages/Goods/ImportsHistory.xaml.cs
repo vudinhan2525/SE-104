@@ -60,6 +60,7 @@ namespace QUANLYDAILI.Pages
             }
             dbConnector.CloseConnection();
         }
+        
         private void SendImportedDataToGoods()
         {
             // Lấy MainFrame từ MainWindow
@@ -76,5 +77,6 @@ namespace QUANLYDAILI.Pages
                 }
             }
         }
+        
     }
 }

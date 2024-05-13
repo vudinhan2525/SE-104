@@ -19,6 +19,8 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Collections.ObjectModel;
 using System.Security.Policy;
+using QUANLYDAILI.Class;
+using System.Collections.Specialized;
 
 namespace QUANLYDAILI.Pages
 {
@@ -32,46 +34,72 @@ namespace QUANLYDAILI.Pages
         private DatabaseConnector dbConnector = new DatabaseConnector();
         public ObservableCollection<YourDataModel> YourDataItems { get; set; } = new ObservableCollection<YourDataModel>();
         public event EventHandler DataSavedEvent;
+
+        // Phương thức tính toán tổng tiền từ dữ liệu trong YourDataItems
+        private void CalculateTotalAmount()
+        {
+            decimal totalAmount = YourDataItems.Sum(item => item.ThanhTien);
+            TotalAmountTextBox.Text = totalAmount.ToString();
+        }
+
+        // Sự kiện xảy ra khi dữ liệu trong YourDataItems thay đổi
+        private void YourDataItems_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            CalculateTotalAmount();
+        }
         public GoodsImport()
         {
             InitializeComponent();
             GoodImportedDataGrid.ItemsSource = YourDataItems;
 
+            //Thay đổi thành tiền
+            GoodImportedDataGrid.CellEditEnding += GoodImportedDataGrid_CellEditEnding;
+
+            // Đăng ký sự kiện CollectionChanged để theo dõi sự thay đổi trong YourDataItems
+            YourDataItems.CollectionChanged += YourDataItems_CollectionChanged;
         }
-      
-     
-       
+        private void GoodImportedDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            // Tính toán lại cột "ThanhTien" khi chỉnh sửa dữ liệu trong cột "SoLuong" hoặc "DonGia"
+            var item = (YourDataModel)e.Row.Item;
+            item.CalculateTotal();
+        }
+
+
+
+
         private void SaveDataToDatabase(string soPhieu, DateTime ngayLapPhieu)
         {
             dbConnector.OpenConnection();
             try
             {
                 foreach (YourDataModel item in YourDataItems)
-            {
-                string query = "INSERT INTO PhieuNhap (MaPhieuNhap, MaMatHang, DonGia, DonViTinh, NgayLapPhieu, SoLuong, ThanhTien)" +
-                               "VALUES (@MaPhieuNhap,@MaMatHang, @DonGia, @DonViTinh, @NgayLapPhieu, @SoLuong, @ThanhTien)";
-                SqlCommand command = new SqlCommand(query, dbConnector.sqlCon);
-                command.Parameters.AddWithValue("@MaPhieuNhap", soPhieu);
-                command.Parameters.AddWithValue("@NgayLapPhieu", ngayLapPhieu);
-                command.Parameters.AddWithValue("@MaMatHang", item.MaMatHang);
-                command.Parameters.AddWithValue("@DonGia", item.DonGia);
-                command.Parameters.AddWithValue("@DonViTinh", item.DonViTinh);
-                command.Parameters.AddWithValue("@SoLuong", item.SoLuong);
-              
-                command.Parameters.AddWithValue("@ThanhTien", item.ThanhTien);
-                command.ExecuteNonQuery();
-            }
+                {
+                    decimal thanhtien = item.DonGia * item.SoLuong;
+                    string query = "INSERT INTO PhieuNhap (MaPhieuNhap, MaMatHang, DonGia,  NgayLapPhieu, SoLuong, ThanhTien)" +
+                                   "VALUES (@MaPhieuNhap,@MaMatHang, @DonGia,  @NgayLapPhieu, @SoLuong, @ThanhTien)";
+                    SqlCommand command = new SqlCommand(query, dbConnector.sqlCon);
+                    command.Parameters.AddWithValue("@MaPhieuNhap", soPhieu);
+                    command.Parameters.AddWithValue("@NgayLapPhieu", ngayLapPhieu);
+                    command.Parameters.AddWithValue("@MaMatHang", item.MaMatHang);
+                    command.Parameters.AddWithValue("@DonGia", item.DonGia);
+
+                    command.Parameters.AddWithValue("@SoLuong", item.SoLuong);
+
+                    command.Parameters.AddWithValue("@ThanhTien", thanhtien);
+                    command.ExecuteNonQuery();
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Đã xảy ra lỗi khi lưu dữ liệu: " + ex.Message);
             }
-            
+
             finally
             {
                 dbConnector.CloseConnection();
             }
-            
+
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -86,7 +114,7 @@ namespace QUANLYDAILI.Pages
             DataSavedEvent?.Invoke(this, EventArgs.Empty);
         }
 
-       
 
     }
+    
 }
