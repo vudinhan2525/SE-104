@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using QUANLYDAILI.Pages.Agents;
 using QUANLYDAILI.Utils;
 
 namespace QUANLYDAILI.Pages
@@ -21,37 +22,12 @@ namespace QUANLYDAILI.Pages
     /// <summary>
     /// Interaction logic for AgentPage.xaml
     /// </summary>
-    public struct Agent
-    {
-        public int MaDaiLy;
-        public string TenDaiLy;
-        public string SoDienThoai;
-        public string Quan;
-        public string Avatar;
-        public string DiaChi;
-        public int Loai;
-        public string NgayTiepNhan;
-        public decimal KhoanNo;
-        public string Email;
-        public Agent(int maDaiLy, string tenDaiLy, string soDienThoai, string quan, string avatar, string diaChi, int loai, string ngayTiepNhan, decimal khoanNo, string email)
-        {
-            MaDaiLy = maDaiLy;
-            TenDaiLy = tenDaiLy;
-            SoDienThoai = soDienThoai;
-            Quan = quan;
-            Avatar = avatar;
-            DiaChi = diaChi;
-            Loai = loai;
-            NgayTiepNhan = ngayTiepNhan;
-            KhoanNo = khoanNo;
-            Email = email;
-        }
-    }
 
 public partial class AgentPage : Page
     {
         private DatabaseConnector dbConnector = new DatabaseConnector();
-        private Frame _menuFrame;
+        private Frame _menuFrame; 
+        private List<Agent> agents = new List<Agent>();
         public AgentPage(Frame menuFrame)
         {
             InitializeComponent();
@@ -79,9 +55,6 @@ public partial class AgentPage : Page
 
                 SqlCommand command = new SqlCommand(query, dbConnector.sqlCon);
                 SqlDataReader reader = command.ExecuteReader();
-
-                List<Agent> agents = new List<Agent>();
-               
                 while (reader.Read())
                 {
                     Agent agent = new Agent(
@@ -97,9 +70,6 @@ public partial class AgentPage : Page
                         reader.GetString(9) 
                     );
                     agents.Add(agent);
-                    agents.Add(agent);
-                    agents.Add(agent);
-                    agents.Add(agent);
                 }
                 reader.Close();
                 for(int i = 0; i < agents.Count; i++)
@@ -108,18 +78,24 @@ public partial class AgentPage : Page
                     Border border = new Border();
                     border.CornerRadius = new CornerRadius(12, 12, 0, 0);
                     border.Margin = new Thickness(0, 20, 0, 0);
+                    border.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#cccccc"));
+                    border.BorderThickness = new Thickness(1);
                     border.Height = 200;
                     ImageBrush imageBrush = new ImageBrush(new BitmapImage(new Uri(agents[i].Avatar)));
                     border.Background = imageBrush;
-
+                    border.Cursor = Cursors.Hand;
+                    border.Tag = i;
+                    border.MouseDown += HandleEditStore;
                     // Create inner Border element
                     Border innerBorder = new Border();
                     innerBorder.CornerRadius = new CornerRadius(0, 0, 12, 12);
-                    innerBorder.BorderBrush = new SolidColorBrush(Colors.Gray);
+                    innerBorder.BorderBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#cccccc"));
                     innerBorder.BorderThickness = new Thickness(1);
                     innerBorder.Background = new SolidColorBrush(Colors.White);
                     innerBorder.Padding = new Thickness(20, 12, 20, 12);
-
+                    innerBorder.Cursor = Cursors.Hand;
+                    innerBorder.Tag = i;
+                    innerBorder.MouseDown += HandleEditStore;
                     // Create StackPanel
                     StackPanel stackPanel = new StackPanel();
 
@@ -148,7 +124,8 @@ public partial class AgentPage : Page
 
                     // Add StackPanel to inner Border
                     innerBorder.Child = stackPanel;
-                    if(i % 3 == 0)
+                    
+                    if (i % 3 == 0)
                     {
                         stPanel1.Children.Add(border);
                         stPanel1.Children.Add(innerBorder);
@@ -177,9 +154,20 @@ public partial class AgentPage : Page
             }
 
         }
+        private void HandleEditStore(object sender, MouseButtonEventArgs e)
+        {
+            Border border = sender as Border;
+            if (border != null)
+            {
+                // Retrieve the value of the Tag property
+                int tagValue = (int)border.Tag;
+                _menuFrame.Content = new AddAgentPage(_menuFrame, agents[tagValue]);
+            }
+        }
         private void handleShowAddForm(object sender, RoutedEventArgs e)
         {
-            _menuFrame.Content = new AddAgentPage(_menuFrame);
+            Agent a = new Agent(0, "", "", "", "", "", 0, "", 0, "");
+            _menuFrame.Content = new AddAgentPage(_menuFrame, a);
         }
     }
 }

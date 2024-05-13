@@ -7,10 +7,10 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Pages\AddAgentPage.xaml.cs">
+    <Compile Update="Pages\Agents\AddAgentPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Pages\AgentPage.xaml.cs">
+    <Compile Update="Pages\Agents\AgentPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\Goods\GoodsImport.xaml.cs">
@@ -30,10 +30,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Pages\AddAgentPage.xaml">
+    <Page Update="Pages\Agents\AddAgentPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Pages\AgentPage.xaml">
+    <Page Update="Pages\Agents\AgentPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\Goods\GoodsImport.xaml">

@@ -23,9 +23,11 @@ namespace QUANLYDAILI
     public partial class MainPage : Page
     {
         private string btnId;
+        private Button tmpBtn;
         public MainPage()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            tmpBtn = HomeBtn;
         }
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -48,7 +50,12 @@ namespace QUANLYDAILI
             // Thay đổi màu của nút khi focus
             Button button = sender as Button;
             if (button != null)
-            {
+            {   
+                if(button.Name != tmpBtn.Name)
+                {
+                    resetButton();
+                }
+                tmpBtn = button; 
                 btnId = button.Name;
                 button.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0194F3"));
                 button.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
@@ -69,17 +76,13 @@ namespace QUANLYDAILI
                 }
             }
         }
-
-        // Hàm xử lý sự kiện khi nút mất focus
-        private void Button_LostFocus(object sender, RoutedEventArgs e)
+        private void resetButton()
         {
-            // Đặt lại màu gốc của nút khi mất focus
-            Button button = sender as Button;
-            if (button != null)
-            {   
-                button.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
-                button.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
-                StackPanel stackPanel = button.Content as StackPanel;
+            if (tmpBtn != null)
+            {
+                tmpBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+                tmpBtn.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
+                StackPanel stackPanel = tmpBtn.Content as StackPanel;
                 string res = ""; ;
                 if (btnId == "HomeBtn") res = "HomeIcon";
                 if (btnId == "GoodsBtn") res = "GoodsIcon";
@@ -97,6 +100,8 @@ namespace QUANLYDAILI
             }
 
         }
+
+
         private void AgentBtn_Click(object sender, RoutedEventArgs e)
         {
             mainMenu.Content = new AgentPage(mainMenu);

@@ -81,7 +81,6 @@
                                     Margin="10,0,10,0"
                                     Height="50"
                                     GotFocus="Button_GotFocus"
-                                    LostFocus="Button_LostFocus"
                                     MouseEnter="Button_MouseEnter"
                                     MouseLeave="Button_MouseLeave"
                                     Click="HomeBtn_Click">
@@ -119,7 +118,6 @@
                                     Margin="10,10,10,0"
                                     Height="50"
                                     GotFocus="Button_GotFocus"
-                                    LostFocus="Button_LostFocus"
                                     Click="AgentBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -155,7 +153,6 @@
                                     MouseEnter="Button_MouseEnter"
                                     MouseLeave="Button_MouseLeave"
                                     GotFocus="Button_GotFocus"
-                                    LostFocus="Button_LostFocus"
                                     Click="GoodsBtn_Click">
                                 <Button.Resources>
                                     <Style TargetType="Border">
@@ -192,8 +189,7 @@
                                     MouseEnter="Button_MouseEnter"
                                     MouseLeave="Button_MouseLeave"
                                     Click="ImportBtn_Click"
-                                    GotFocus="Button_GotFocus"
-                                    LostFocus="Button_LostFocus">
+                                    GotFocus="Button_GotFocus">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius"

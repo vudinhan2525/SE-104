@@ -196,7 +196,8 @@
                               x:Name="TypeInp"
                               FontSize="14"
                               Padding="20,10,20,10"
-                              BorderBrush="White" />
+                              BorderBrush="White"
+                              SelectionChanged="TypeInp_SelectionChanged" />
 
                 </Grid>
                 <Grid Margin="40,20,0,0">
@@ -246,8 +247,9 @@
                     </TextBox>
 
                 </Grid>
-                <Button x:Name="ImportBtn"
+                <Button x:Name="AddStoreBtn"
                         Cursor="Hand"
+                        Click="AddStoreBtn_Click"
                         Margin="0,30,40,0"
                         HorizontalAlignment="Right"
                         Height="50">
@@ -260,9 +262,10 @@
                     <DockPanel Height="36"
                                Width="130">
 
-                        <TextBlock x:Name="AddStoreBtn"
+                        <TextBlock
                                    Text="Add Store"
                                    Width="80"
+                            x:Name="addStoreText"
                                    LineHeight="32"
                                    Margin="0,7,0,0"
                                    Height="32"
