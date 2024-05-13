@@ -1,4 +1,4 @@
-USE master
+﻿USE master
 IF EXISTS (SELECT * FROM SYS.DATABASES WHERE NAME = 'DaiLy')
 BEGIN
 	ALTER DATABASE DaiLy SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
@@ -43,7 +43,7 @@ CREATE TABLE MatHang(
 CREATE TABLE PhieuXuat(
 	MaPhieuXuat int not null,
 	MaMatHang int not null,
-	MaDaiLy int,
+	TenDaiLy varchar(255),
 	NgayLapPhieu datetime,
 	DonViTinh varchar(50),
 	SoLuong int,
@@ -52,8 +52,8 @@ CREATE TABLE PhieuXuat(
 )
 
 CREATE TABLE DaiLy(
-	MaDaiLy int primary key,
-	TenDaiLy varchar(255),
+	
+	TenDaiLy varchar(255) primary key,
 	SoDienThoai varchar(15),
 	Quan varchar(50),
 	DiaChi varchar,
@@ -65,12 +65,10 @@ CREATE TABLE DaiLy(
 
 CREATE TABLE PhieuThu(
 	MaPhieuThu int primary key,
-	MaDaiLy int,
+	TenDaiLy varchar(255),
 	SoTienThu money,
 	NgayThu datetime
 )
-Go
-
 
 ALTER TABLE PhieuNhap
 ADD CONSTRAINT PK_PhieuNhap PRIMARY KEY (MaPhieuNhap, MaMatHang)
@@ -78,6 +76,12 @@ ADD CONSTRAINT PK_PhieuNhap PRIMARY KEY (MaPhieuNhap, MaMatHang)
 ALTER TABLE PhieuNhap
 ADD CONSTRAINT FK_PhieuNhap_MatHang
 FOREIGN KEY(MaMatHang) REFERENCES MatHang(MaMatHang)
+
+
+
+
+
+
 
 ALTER TABLE PhieuXuat
 ADD CONSTRAINT PK_PhieuXuat PRIMARY KEY(MaPhieuXuat, MaMatHang)
@@ -88,11 +92,11 @@ FOREIGN KEY(MaMatHang) REFERENCES MatHang(MaMatHang)
 
 ALTER TABLE PhieuXuat
 ADD CONSTRAINT FK_PhieuXuat_DaiLy
-FOREIGN KEY(MaDaiLy) REFERENCES DaiLy(MaDaiLy)
+FOREIGN KEY(TenDaiLy) REFERENCES DaiLy(TenDaiLy)
 
 ALTER TABLE PhieuThu
 ADD CONSTRAINT FK_DaiLy_PhieuThu
-FOREIGN KEY(MaDaiLy) REFERENCES DaiLy(MaDaiLy)
+FOREIGN KEY(TenDaiLy) REFERENCES DaiLy(TenDaiLy)
 
 
 
@@ -115,10 +119,9 @@ BEGIN
         FROM inserted
         GROUP BY MaMatHang
     ) i ON MatHang.MaMatHang = i.MaMatHang;
-	UPDATE PhieuNhap
-    SET DonGia = mh.Gia,
-        DonViTinh = mh.DonViTinh
-    FROM PhieuNhap pn
-    INNER JOIN MatHang mh ON pn.MaMatHang = mh.MaMatHang
-    WHERE pn.MaPhieuNhap IN (SELECT MaPhieuNhap FROM inserted);
+	--UPDATE PhieuNhap
+    --SET DonViTinh = mh.DonViTinh
+    --FROM PhieuNhap pn
+    -- JOIN MatHang mh ON pn.MaMatHang = mh.MaMatHang
+   -- WHERE pn.MaPhieuNhap IN (SELECT MaPhieuNhap FROM inserted);
 END;

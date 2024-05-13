@@ -53,14 +53,14 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="MaMatHang" Width="*" Binding="{Binding Path=MaMatHang}" IsReadOnly="False" />
                         <DataGridTextColumn Header="DonGia" Width="*" Binding="{Binding Path=DonGia}" IsReadOnly="False"/>
-                        <DataGridTextColumn Header="DonViTinh" Width="*" Binding="{Binding Path=DonViTinh}" IsReadOnly="False"/>
                         <DataGridTextColumn Header="SoLuong" Width="*" Binding="{Binding Path=SoLuong}" IsReadOnly="False"/>
                         <DataGridTextColumn Header="ThanhTien" Width="*" Binding="{Binding Path=ThanhTien}" IsReadOnly="False"/>
                     </DataGrid.Columns>
                 </DataGrid>
-                <!-- Tổng tiền -->
-                <TextBlock x:Name="TongTienTextBlock" Text="Tổng tiền: " TextAlignment="Right" Margin="0,0,0,0" Foreground="White"/>
-
+                <StackPanel Orientation="Horizontal" Margin="10,5,0,0" Width="212" HorizontalAlignment="Right">
+                    <TextBlock Text="Tổng tiền: " Foreground="White" Margin="0,0,5,0"/>
+                    <TextBox x:Name="TotalAmountTextBox" Text="{Binding YourDataItems.Sum(ThanhTien)}" IsReadOnly="True" Foreground="Black" Width="152" Margin="0,0,0,0"/>
+                </StackPanel>
                 <!-- Nút Save -->
                 <Button x:Name="SaveBtn" Content="Lưu" Click="SaveButton_Click" Width="100" Height="30" Margin="10"/>
                 
