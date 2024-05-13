@@ -512,11 +512,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\Hoc\\hoc\\Nam 2\\Nhap Mon CNPM\\12.05.DaiLy\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\QUANLYDAILI.csproj",
+      "projectUniqueName": "H:\\Hoc\\hoc\\Nam 2\\Nhap Mon CNPM\\TMP\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\QUANLYDAILI.csproj",
       "projectName": "QUANLYDAILI",
-      "projectPath": "H:\\Hoc\\hoc\\Nam 2\\Nhap Mon CNPM\\12.05.DaiLy\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\QUANLYDAILI.csproj",
+      "projectPath": "H:\\Hoc\\hoc\\Nam 2\\Nhap Mon CNPM\\TMP\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\QUANLYDAILI.csproj",
       "packagesPath": "C:\\Users\\tuank\\.nuget\\packages\\",
-      "outputPath": "H:\\Hoc\\hoc\\Nam 2\\Nhap Mon CNPM\\12.05.DaiLy\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\obj\\",
+      "outputPath": "H:\\Hoc\\hoc\\Nam 2\\Nhap Mon CNPM\\TMP\\SE-104\\QUANLYDAILI\\QUANLYDAILI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\tuank\\AppData\\Roaming\\NuGet\\NuGet.Config",
