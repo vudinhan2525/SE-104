@@ -6,7 +6,10 @@ namespace QUANLYDAILI.Utils
     public class DatabaseConnector
     {
         // Đổi = connection string của mỗi người
-        private readonly string cntString = @"Data Source=MSI\AN;Initial Catalog=QUANLYDAILI;Integrated Security=True";
+        //An
+        //private readonly string cntString = @"Data Source=MSI\AN;Initial Catalog=QUANLYDAILI;Integrated Security=True";
+        //Khoa
+        private readonly string cntString = @"Data Source=KHOAPC;Initial Catalog=DaiLy;Integrated Security=True";
         public SqlConnection sqlCon = null;
 
         public void OpenConnection()

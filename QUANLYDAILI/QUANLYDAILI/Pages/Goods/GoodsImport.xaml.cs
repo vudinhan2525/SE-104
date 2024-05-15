@@ -106,6 +106,38 @@ namespace QUANLYDAILI.Pages
             SaveDataToDatabase(soPhieu, ngayLapPhieu);
             OnDataSaved();
         }
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                dbConnector.OpenConnection();
+                foreach (YourDataModel item in YourDataItems)
+                {
+                    // Retrieve the price (DonGia) from the database for each item
+                    string queryDonGia = "SELECT Gia FROM MatHang WHERE MaMatHang = @MaMatHang";
+                    SqlCommand commandDonGia = new SqlCommand(queryDonGia, dbConnector.sqlCon);
+                    commandDonGia.Parameters.AddWithValue("@MaMatHang", item.MaMatHang);
+                    decimal donGia = (decimal)commandDonGia.ExecuteScalar();
+
+                    // Set the DonGia property of the item
+                    item.DonGia = donGia;
+
+                    // Calculate the total price (ThanhTien) for the item
+                    decimal thanhTien = item.DonGia * item.SoLuong;
+                    item.ThanhTien = thanhTien;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
+
+        }
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Thoát ứng dụng
+            Application.Current.Shutdown();
+        }
         protected virtual void OnDataSaved()
         {
             // Kiểm tra xem có người đăng ký sự kiện hay không
