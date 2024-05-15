@@ -45,6 +45,7 @@ namespace QUANLYDAILI.Pages
                 AvatarInp.Text = a.Avatar;
                 DebtInp.Text = a.KhoanNo.ToString();
                 EmailInp.Text = a.Email;
+                DeleteStoreBtn.Visibility = Visibility.Visible;
                 if(a.Loai == 2)
                 {
                     TypeInp.SelectedIndex = 1;
@@ -215,6 +216,51 @@ namespace QUANLYDAILI.Pages
                 }
             }
             return true;
+        }
+
+        private void DeleteStoreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (isModified)
+            {
+                dbConnector.OpenConnection();
+                string query = "DELETE FROM DaiLy WHERE MaDaiLy = @MaDaiLy";
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.CommandText = query;
+                sqlCmd.Connection = dbConnector.sqlCon;
+                sqlCmd.Parameters.AddWithValue("@MaDaiLy", agent.MaDaiLy);
+                try
+                {
+                    int rowsAffected = sqlCmd.ExecuteNonQuery();
+                    if (rowsAffected > 0)
+                    {
+                        MessageBox.Show("Store deleted successfully.");
+                        _menuFrame.Content = new AgentPage(_menuFrame);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to delete store.");
+                    }   
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    dbConnector.CloseConnection();
+                }
+                
+            }
+        }
+
+        private void DeleteStoreBtn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            DeleteStoreBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c53030"));
+        }
+
+        private void DeleteStoreBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            DeleteStoreBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e53e3e"));
         }
     }
 }

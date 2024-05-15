@@ -247,34 +247,62 @@
                     </TextBox>
 
                 </Grid>
-                <Button x:Name="AddStoreBtn"
-                        Cursor="Hand"
-                        Click="AddStoreBtn_Click"
-                        Margin="0,30,40,0"
-                        HorizontalAlignment="Right"
-                        Height="50">
-                    <Button.Resources>
-                        <Style TargetType="{x:Type Border}">
-                            <Setter Property="CornerRadius"
-                                    Value="7" />
-                        </Style>
-                    </Button.Resources>
-                    <DockPanel Height="36"
-                               Width="130">
-
-                        <TextBlock
-                                   Text="Add Store"
-                                   Width="80"
-                            x:Name="addStoreText"
-                                   LineHeight="32"
-                                   Margin="0,7,0,0"
-                                   Height="32"
-                                   TextAlignment="Center"
-                                   RenderTransformOrigin="0.5,0.742"
-                                   FontWeight="Bold"
-                                   FontSize="16" />
-                    </DockPanel>
-                </Button>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="DeleteStoreBtn"
+                            Cursor="Hand"
+                            Visibility="Collapsed"
+                            Background="#e53e3e"
+                            Click="DeleteStoreBtn_Click"
+                            MouseEnter="DeleteStoreBtn_MouseEnter"
+                            MouseLeave="DeleteStoreBtn_MouseLeave"
+                            Margin="0,30,30,0"
+                            Height="50">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius"
+                                        Value="7" />
+                            </Style>
+                        </Button.Resources>
+                        <DockPanel Height="36"
+                                   Width="130">
+                            <TextBlock Text="Delete Store"
+                                       Width="100"
+                                       LineHeight="32"
+                                       Margin="0,7,0,0"
+                                       Height="32"
+                                       TextAlignment="Center"
+                                       RenderTransformOrigin="0.5,0.742"
+                                       FontWeight="Bold"
+                                       FontSize="16" />
+                        </DockPanel>
+                    </Button>
+                    <Button x:Name="AddStoreBtn"
+                            Cursor="Hand"
+                            Click="AddStoreBtn_Click"
+                            Margin="0,30,40,0"
+                            Height="50">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius"
+                                        Value="7" />
+                            </Style>
+                        </Button.Resources>
+                        <DockPanel Height="36"
+                                   Width="130">
+                            <TextBlock Text="Add Store"
+                                       Width="80"
+                                       x:Name="addStoreText"
+                                       LineHeight="32"
+                                       Margin="0,7,0,0"
+                                       Height="32"
+                                       TextAlignment="Center"
+                                       RenderTransformOrigin="0.5,0.742"
+                                       FontWeight="Bold"
+                                       FontSize="16" />
+                        </DockPanel>
+                    </Button>
+                   
+                </StackPanel>
             </StackPanel>
         </Border>
     </Grid>
