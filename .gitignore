@@ -1,3 +1,10 @@
 QUANLYDAILI/.vs
+
 QUANLYDAILI/QUANLYDAILI/bin/
-QUANLYDAILI/QUANLYDAILI/obj/
+
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+packages
