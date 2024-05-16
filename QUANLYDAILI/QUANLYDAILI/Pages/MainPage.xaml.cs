@@ -65,6 +65,7 @@ namespace QUANLYDAILI
                 if (btnId == "GoodsBtn") res = "GoodsIcon";
                 if (btnId == "AgentBtn") res = "AgentIcon";
                 if (btnId == "ImportBtn") res = "ImportIcon";
+                if (btnId == "ExportBtn") res = "ExportIcon";
                 if (stackPanel != null)
                 {
                
@@ -88,6 +89,8 @@ namespace QUANLYDAILI
                 if (btnId == "GoodsBtn") res = "GoodsIcon";
                 if (btnId == "AgentBtn") res = "AgentIcon";
                 if (btnId == "ImportBtn") res = "ImportIcon";
+                if (btnId == "ExportBtn") res = "ExportIcon";
+
                 if (stackPanel != null)
                 {
 
@@ -121,6 +124,11 @@ namespace QUANLYDAILI
         private void ImportBtn_Click(object sender, RoutedEventArgs e)
         {
             mainMenu.Content = new ImportsHistory(); 
+        }
+
+        private void ExportBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

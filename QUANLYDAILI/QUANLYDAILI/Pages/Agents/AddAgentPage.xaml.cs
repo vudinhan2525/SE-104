@@ -46,6 +46,7 @@ namespace QUANLYDAILI.Pages
                 DebtInp.Text = a.KhoanNo.ToString();
                 EmailInp.Text = a.Email;
                 DeleteStoreBtn.Visibility = Visibility.Visible;
+                GetMoneyStoreBtn.Visibility = Visibility.Visible;
                 if(a.Loai == 2)
                 {
                     TypeInp.SelectedIndex = 1;
@@ -261,6 +262,21 @@ namespace QUANLYDAILI.Pages
         private void DeleteStoreBtn_MouseLeave(object sender, MouseEventArgs e)
         {
             DeleteStoreBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e53e3e"));
+        }
+
+        private void GetMoneyStoreBtn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            GetMoneyStoreBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#1dbf69"));
+        }
+
+        private void GetMoneyStoreBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            GetMoneyStoreBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#21d375"));
+        }
+
+        private void GetMoneyStoreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            _menuFrame.Content = new TakeMoneyForm(_menuFrame, agent);
         }
     }
 }

@@ -33,6 +33,7 @@ public partial class AgentPage : Page
             InitializeComponent();
             getAllAgents();
             _menuFrame = menuFrame;
+
         }
         private Image addImage(string url)
         {
