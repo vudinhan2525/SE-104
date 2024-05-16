@@ -15,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using FontAwesome.WPF;
+using QUANLYDAILI.Pages.Bills;
+
 namespace QUANLYDAILI
 {
     /// <summary>
@@ -66,6 +68,7 @@ namespace QUANLYDAILI
                 if (btnId == "AgentBtn") res = "AgentIcon";
                 if (btnId == "ImportBtn") res = "ImportIcon";
                 if (btnId == "ExportBtn") res = "ExportIcon";
+                if (btnId == "BillBtn") res = "BillIcon";
                 if (stackPanel != null)
                 {
                
@@ -90,7 +93,7 @@ namespace QUANLYDAILI
                 if (btnId == "AgentBtn") res = "AgentIcon";
                 if (btnId == "ImportBtn") res = "ImportIcon";
                 if (btnId == "ExportBtn") res = "ExportIcon";
-
+                if (btnId == "BillBtn") res = "BillIcon";
                 if (stackPanel != null)
                 {
 
@@ -129,6 +132,11 @@ namespace QUANLYDAILI
         private void ExportBtn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void BillBtn_Click(object sender, RoutedEventArgs e)
+        {
+            mainMenu.Content = new BillPage();
         }
     }
 }

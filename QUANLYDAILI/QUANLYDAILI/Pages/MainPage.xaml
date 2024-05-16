@@ -253,6 +253,44 @@
                                 </StackPanel>
                             </Button>
                         </StackPanel>
+                        <!-- Phieu thu -->
+                        <StackPanel DockPanel.Dock="Top">
+
+                            <Button x:Name="BillBtn"
+                                    Margin="10,10,10,0"
+                                    Cursor="Hand"
+                                    Click="BillBtn_Click"
+                                    Height="50"
+                                    MouseEnter="Button_MouseEnter"
+                                    MouseLeave="Button_MouseLeave"
+                                    GotFocus="Button_GotFocus">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius"
+                                                Value="7" />
+                                    </Style>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal"
+                                            Height="36"
+                                            MinWidth="70">
+                                    <fa:ImageAwesome Icon="FileText"
+                                                     Width="22"
+                                                     Height="22"
+                                                     x:Name="BillIcon" />
+                                    <TextBlock x:Name="BillBtn2"
+                                               Text="Bills"
+                                               Width="55"
+                                               LineHeight="32"
+                                               Margin="4,7,0,0"
+                                               Padding="2,0,0,0"
+                                               Height="32"
+                                               TextAlignment="Left"
+                                               RenderTransformOrigin="0.5,0.742"
+                                               FontWeight="Bold"
+                                               FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
                     </DockPanel>
                 </Border>
 
