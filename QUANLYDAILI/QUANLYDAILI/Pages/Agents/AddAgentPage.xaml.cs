@@ -253,7 +253,11 @@ namespace QUANLYDAILI.Pages
                 
             }
         }
-
+        private void ExportGoodsBtn_Click(Object sender, RoutedEventArgs e)
+        {
+            _menuFrame.Content = new ExportForm(_menuFrame, agent);
+        }
+       
         private void DeleteStoreBtn_MouseEnter(object sender, MouseEventArgs e)
         {
             DeleteStoreBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c53030"));
@@ -278,5 +282,15 @@ namespace QUANLYDAILI.Pages
         {
             _menuFrame.Content = new TakeMoneyForm(_menuFrame, agent);
         }
+        private void ExportGoodsBtn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            DeleteStoreBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c53030"));
+        }
+
+        private void ExportGoodsBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            DeleteStoreBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e53e3e"));
+        }
+
     }
 }

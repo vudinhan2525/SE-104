@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QUANLYDAILI.Pages
+namespace QUANLYDAILI.Class
 {
-    public class YourDataModel : INotifyPropertyChanged
+    public class ExportData : INotifyPropertyChanged
     {
         private string _maMatHang;
         public string MaMatHang
@@ -42,8 +42,8 @@ namespace QUANLYDAILI.Pages
             }
         }
 
-        private decimal _donViTinh;
-        public decimal DonViTinh
+        private string _donViTinh;
+        public string DonViTinh
         {
             get { return _donViTinh; }
             set
@@ -76,7 +76,16 @@ namespace QUANLYDAILI.Pages
                 OnPropertyChanged(nameof(ThanhTien));
             }
         }
-       
+        private DateTime _ngayLapPhieu;
+        public DateTime NgayLapPhieu
+        {
+            get { return _ngayLapPhieu; }
+            set
+            {
+                _ngayLapPhieu = value;
+                OnPropertyChanged(nameof(NgayLapPhieu));
+            }
+        }
         // Phương thức tính toán tự động cho Thành tiền
         public void CalculateTotal()
         {

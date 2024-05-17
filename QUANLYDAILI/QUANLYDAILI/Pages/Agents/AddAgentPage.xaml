@@ -248,6 +248,34 @@
 
                 </Grid>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="ExportGoodsBtn"
+                            Cursor="Hand"
+                            Visibility="Visible"
+                            Click="ExportGoodsBtn_Click"
+                            Background="#ebd234"
+                            MouseEnter="ExportGoodsBtn_MouseEnter"
+                            MouseLeave="ExportGoodsBtn_MouseLeave"
+                            Margin="0,30,30,0"
+                            Height="50">
+                            <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius"
+                                Value="7" />
+                            </Style>
+                        </Button.Resources>
+                        <DockPanel Height="36"
+                                   Width="130">
+                            <TextBlock Text="Export"
+                                   Width="100"
+                                   LineHeight="32"
+                                   Margin="0,7,0,0"
+                                   Height="32"
+                                   TextAlignment="Center"
+                                   RenderTransformOrigin="0.5,0.742"
+                                   FontWeight="Bold"
+                                   FontSize="16" /> 
+                        </DockPanel>
+                    </Button>
                     <Button x:Name="GetMoneyStoreBtn"
                             Cursor="Hand"
                             Visibility="Collapsed"

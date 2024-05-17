@@ -13,6 +13,9 @@
     <Compile Update="Pages\Agents\AgentPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Pages\Agents\Export\ExportForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\Agents\TakeMoneyForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -40,6 +43,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\Agents\AgentPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\Agents\Export\ExportForm.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\Agents\TakeMoneyForm.xaml">
