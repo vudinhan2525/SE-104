@@ -312,14 +312,6 @@
                 <!-- Search -->
                 <Grid Width="300"
                       HorizontalAlignment="Left">
-                    <TextBlock Margin="20 0"
-                               VerticalAlignment="Center"
-                               Foreground="Black"
-                               IsHitTestVisible="False"
-                               Panel.ZIndex="1"
-                               Text="Search..."
-                               Visibility="Visible" />
-                    <TextBox x:Name="txtSearch" />
                 </Grid>
                 <!--Page Title -->
                 <TextBlock Text="Test"
@@ -331,7 +323,7 @@
                            Foreground="Black" />
                 <!--Main Content -->
                 <Grid  HorizontalAlignment="Stretch"
-                       Margin="-27,31,0,-20"
+                       Margin="-27,0,0,-20"
                        Grid.RowSpan="6"
                        Grid.Row="1">
                     <Frame x:Name="mainMenu"
