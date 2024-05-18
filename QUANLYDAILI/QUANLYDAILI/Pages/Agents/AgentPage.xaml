@@ -9,6 +9,30 @@
       d:DesignHeight="1200" d:DesignWidth="1200"
       Title="AgentPage">
     <Page.Resources>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="SnapsToDevicePixels"
+                    Value="True" />
+            <Setter Property="OverridesDefaultStyle"
+                    Value="True" />
+            <Setter Property="FocusVisualStyle"
+                    Value="{x:Null}" />
+            <Setter Property="AllowDrop"
+                    Value="true" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <Border Name="Border"
+                                CornerRadius="12"
+                                Background="#FFFFFF"
+                                BorderBrush="#888888"
+                                BorderThickness="0">
+                            <ScrollViewer Margin="0"
+                                          x:Name="PART_ContentHost" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background"
                     Value="#0194F3" />
@@ -85,7 +109,38 @@
                         </DockPanel>
                     </Button>
                 </DockPanel>
-                <Grid Margin="0,0,0,0">
+                    <Border Width="500"
+                            Background="White"
+                            CornerRadius="12"
+                            BorderBrush="#cccccc"
+                            BorderThickness="1px">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <TextBox Width="450"
+                                     x:Name="SearchInp"
+                                     Padding="22,12,22,12"
+                                     FontSize="16"
+                                     BorderBrush="Transparent">
+                                <TextBox.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius"
+                                                Value="12" />
+                                    </Style>
+                                </TextBox.Resources>
+                            </TextBox>
+                            <Button Height="42"
+                                    Cursor="Hand"
+                                    Background="White"
+                                    Click="SearchBtn_Click"
+                                    VerticalAlignment="Center">
+                                <fa:ImageAwesome Icon="Search"
+                                                 Width="50"
+                                                 Height="22"
+                                                 x:Name="SearchIcon" />
+                            </Button>
+                        </StackPanel>
+                    </Border>
+                    <Grid Margin="0,0,0,0">
 
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
