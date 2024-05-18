@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Collections.ObjectModel;
 using FontAwesome.WPF;
 using QUANLYDAILI.Pages.Bills;
+using QUANLYDAILI.Pages.Agents.Export;
 
 namespace QUANLYDAILI
 {
@@ -131,7 +132,7 @@ namespace QUANLYDAILI
 
         private void ExportBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            mainMenu.Content = new ExportHistory();
         }
 
         private void BillBtn_Click(object sender, RoutedEventArgs e)

@@ -250,7 +250,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <Button x:Name="ExportGoodsBtn"
                             Cursor="Hand"
-                            Visibility="Visible"
+                            Visibility="Collapsed"
                             Click="ExportGoodsBtn_Click"
                             Background="#ebd234"
                             MouseEnter="ExportGoodsBtn_MouseEnter"

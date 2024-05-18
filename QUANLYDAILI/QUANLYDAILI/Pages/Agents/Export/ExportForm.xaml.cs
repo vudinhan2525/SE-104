@@ -36,6 +36,7 @@ namespace QUANLYDAILI.Pages.Agents
             
             if (a.MaDaiLy != 0)
             {
+
                 agent = a;
                 NameInp.Text = agent.TenDaiLy;
             }
@@ -63,14 +64,14 @@ namespace QUANLYDAILI.Pages.Agents
                 foreach (ExportData item in YourDataItems)
                 {
                     decimal thanhtien = item.DonGia * item.SoLuong;
-                    string query = "INSERT INTO PhieuXuat (MaMatHang, MaDaiLy, DonViTinh, SoLuong, DonGia, ThanhTien)" +
-                                   "VALUES (@MaMatHang,@MaDaiLy,  @DonViTinh, @SoLuong, @DonGia, @ThanhTien)";
+                    string query = "INSERT INTO PhieuXuat (MaMatHang, MaDaiLy, DonViTinh, NgayLapPhieu, SoLuong, DonGia, ThanhTien)" +
+                                   "VALUES (@MaMatHang,@MaDaiLy,  @DonViTinh, @NgayLapPhieu, @SoLuong, @DonGia, @ThanhTien)";
                     SqlCommand command = new SqlCommand(query, dbConnector.sqlCon);
                   
                     
                     command.Parameters.AddWithValue("@MaMatHang", item.MaMatHang);
                     command.Parameters.AddWithValue("@NgayLapPhieu", ngayLapPhieu);
-                    command.Parameters.AddWithValue("@MaDaiLy", item.MaDaiLy);
+                    command.Parameters.AddWithValue("@MaDaiLy", agent.MaDaiLy);
                     command.Parameters.AddWithValue("@DonViTinh", item.DonViTinh);
                     command.Parameters.AddWithValue("@DonGia", item.DonGia);
                     command.Parameters.AddWithValue("@SoLuong", item.SoLuong);
@@ -105,13 +106,20 @@ namespace QUANLYDAILI.Pages.Agents
                 foreach (ExportData item in YourDataItems)
                 {
                     // Retrieve the price (DonGia) and unit (DonViTinh) from the database for each item
-                    string query = "SELECT Gia, DonViTinh FROM MatHang WHERE MaMatHang = @MaMatHang";
+                    string query = "SELECT Gia, DonViTinh, SoLuong FROM MatHang WHERE MaMatHang = @MaMatHang";
                     SqlCommand command = new SqlCommand(query, dbConnector.sqlCon);
                     command.Parameters.AddWithValue("@MaMatHang", item.MaMatHang);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
+                            if(item.SoLuong > reader.GetInt32(reader.GetOrdinal("SoLuong")))
+                            {
+                                MessageBox.Show("Khong du mat hang de xuat!");
+                                item.SoLuong = 0;
+
+                                return;
+                            }
                             // Ensure that the data types match the expected types in the database
                             item.DonGia = reader.GetDecimal(reader.GetOrdinal("Gia")); // Retrieve the decimal value from the Gia column
                             item.DonViTinh = reader.GetString(reader.GetOrdinal("DonViTinh")); // Retrieve the string value from the DonViTinh column

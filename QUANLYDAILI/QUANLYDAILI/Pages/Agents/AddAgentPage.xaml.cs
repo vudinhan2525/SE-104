@@ -47,7 +47,8 @@ namespace QUANLYDAILI.Pages
                 EmailInp.Text = a.Email;
                 DeleteStoreBtn.Visibility = Visibility.Visible;
                 GetMoneyStoreBtn.Visibility = Visibility.Visible;
-                if(a.Loai == 2)
+                ExportGoodsBtn.Visibility = Visibility.Visible;
+                if (a.Loai == 2)
                 {
                     TypeInp.SelectedIndex = 1;
                 }

@@ -35,7 +35,7 @@ CREATE TABLE PhieuNhap(
 CREATE TABLE MatHang(
 	MaMatHang int PRIMARY KEY ,
 	TenMatHang nvarchar(100),
-	Gia money,
+	Gia decimal,
 	SoLuong int,
 	DonViTinh nvarchar(50)
 )
@@ -47,8 +47,8 @@ CREATE TABLE PhieuXuat(
 	NgayLapPhieu datetime,
 	DonViTinh nvarchar(50),
 	SoLuong int,
-	DonGia money,
-	ThanhTien money
+	DonGia decimal,
+	ThanhTien decimal
 )
 
 CREATE TABLE DaiLy(
@@ -99,6 +99,9 @@ INSERT INTO MatHang( MaMatHang, TenMatHang, Gia, SoLuong, DonViTinh)
 Values ('1','GTX-3060',6500000,'2','Don vi'),
 		('2','Razor Viper',1600000,'4','Don vi');
 
+INSERT INTO DaiLy(MaDaiLy, TenDaiLy, SoDienThoai, Quan, Avatar, DiaChi, Loai, NgayTiepNhan, KhoanNo, Email)
+Values (1, 'Razer','123456789','Quan 1','https://upload.wikimedia.org/wikipedia/vi/a/a1/Razer_snake_logo.png','8, Le Thuc Hoach',1,'12/12/2004','1000000','razer@gmail.com')
+
 SELECT * FROM MatHang
 GO
 
@@ -121,3 +124,5 @@ BEGIN
     JOIN MatHang mh ON pn.MaMatHang = mh.MaMatHang
 	WHERE pn.MaPhieuNhap IN (SELECT MaPhieuNhap FROM inserted);
 END;
+
+Select * from PhieuXuat

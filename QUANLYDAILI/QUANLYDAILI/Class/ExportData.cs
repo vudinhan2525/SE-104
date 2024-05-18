@@ -9,8 +9,18 @@ namespace QUANLYDAILI.Class
 {
     public class ExportData : INotifyPropertyChanged
     {
-        private string _maMatHang;
-        public string MaMatHang
+        private int _maPhieuXuat;
+        public int MaPhieuXuat
+        {
+            get { return _maPhieuXuat; }
+            set
+            {
+                _maPhieuXuat = value;
+                OnPropertyChanged(nameof(MaPhieuXuat));
+            }
+        }
+        private int _maMatHang;
+        public int MaMatHang
         {
             get { return _maMatHang; }
             set
@@ -19,8 +29,8 @@ namespace QUANLYDAILI.Class
                 OnPropertyChanged(nameof(MaMatHang));
             }
         }
-        private string _maDaiLy;
-        public string MaDaiLy
+        private int _maDaiLy;
+        public int MaDaiLy
         {
             get { return _maDaiLy; }
             set
