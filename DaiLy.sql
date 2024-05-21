@@ -99,8 +99,8 @@ INSERT INTO MatHang( MaMatHang, TenMatHang, Gia, SoLuong, DonViTinh)
 Values ('1','GTX-3060',6500000,'2','Don vi'),
 		('2','Razor Viper',1600000,'4','Don vi');
 
-INSERT INTO DaiLy(MaDaiLy, TenDaiLy, SoDienThoai, Quan, Avatar, DiaChi, Loai, NgayTiepNhan, KhoanNo, Email)
-Values (1, 'Razer','123456789','Quan 1','https://upload.wikimedia.org/wikipedia/vi/a/a1/Razer_snake_logo.png','8, Le Thuc Hoach',1,'12/12/2004','1000000','razer@gmail.com')
+INSERT INTO DaiLy(TenDaiLy, SoDienThoai, Quan, Avatar, DiaChi, Loai, NgayTiepNhan, KhoanNo, Email)
+Values ( 'Razer','123456789','Quan 1','https://upload.wikimedia.org/wikipedia/vi/a/a1/Razer_snake_logo.png','8, Le Thuc Hoach',1,'12/12/2004','1000000','razer@gmail.com')
 
 SELECT * FROM MatHang
 GO
@@ -124,5 +124,20 @@ BEGIN
     JOIN MatHang mh ON pn.MaMatHang = mh.MaMatHang
 	WHERE pn.MaPhieuNhap IN (SELECT MaPhieuNhap FROM inserted);
 END;
-
-Select * from PhieuXuat
+GO
+CREATE TRIGGER UpdateGoodsQuantity2 
+ON PhieuXuat
+AFTER INSERT 
+As	
+BEGIN
+    UPDATE MatHang
+    SET SoLuong = SoLuong- i.TongNhap
+	From MatHang
+	Inner Join (
+    SELECT MaMatHang, SUM(SoLuong) AS TongNhap
+        FROM inserted
+        GROUP BY MaMatHang
+    ) i ON MatHang.MaMatHang = i.MaMatHang;
+	
+END;
+GO

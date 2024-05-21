@@ -55,7 +55,28 @@ namespace QUANLYDAILI.Pages.Agents
             // Tính toán lại cột "ThanhTien" khi chỉnh sửa dữ liệu trong cột "SoLuong" hoặc "DonGia"
             var item = (ExportData)e.Row.Item;
             item.CalculateTotal();
+            // Recalculate the total after editing
+            CalculateTotal();
         }
+        private void CalculateTotal()
+        {
+            double total = YourDataItems.Sum(item => (double)item.ThanhTien);
+            TotalInp.Text = total.ToString();
+            UpdateRemain();
+        }
+        private void UpdateRemain()
+        {
+            if (double.TryParse(TotalInp.Text, out double total) && double.TryParse(PaymentInp.Text, out double payment))
+            {
+                double remain = total - payment;
+                RemainInp.Text = remain.ToString();
+            }
+        }
+        private void PaymentInp_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateRemain();
+        }
+
         private void SaveDataToDatabase(DateTime ngayLapPhieu)
         {
             dbConnector.OpenConnection();
@@ -136,6 +157,14 @@ namespace QUANLYDAILI.Pages.Agents
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
+            finally
+            {
+                dbConnector.CloseConnection();
+            }
+
+            // Recalculate and update the total
+            CalculateTotal();
+            
         }
         protected virtual void OnDataSaved()
         {
