@@ -27,6 +27,7 @@ namespace QUANLYDAILI.Pages.Agents.Export
     {
         private DatabaseConnector dbConnector = new DatabaseConnector();
         private List<ExportData> _exports = new List<ExportData>();
+        private List<Agent> agents = new List<Agent>();
         public ExportHistory()
         {
             InitializeComponent();
@@ -49,6 +50,49 @@ namespace QUANLYDAILI.Pages.Agents.Export
                 }
             }
             dbConnector.CloseConnection();
+
+        }
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+
+            string query = $"SELECT * FROM DaiLy WHERE MaDaiLy LIKE @query";
+            try
+            {
+                dbConnector.OpenConnection();
+
+                SqlCommand command = new SqlCommand(query, dbConnector.sqlCon);
+                command.Parameters.AddWithValue("@query", "%" + SearchExp.Text.Trim() + "%");
+                SqlDataReader reader = command.ExecuteReader();
+
+                agents = new List<Agent>();
+                while (reader.Read())
+                {
+                    Agent agent = new Agent(
+                        reader.GetInt32(0),
+                        reader.GetString(1),
+                        reader.GetString(2),
+                        reader.GetString(3),
+                        reader.GetString(4),
+                        reader.GetString(5),
+                        reader.GetByte(6),
+                        reader.GetDateTime(7).ToString("yyyy-MM-dd"),
+                        reader.GetDecimal(8),
+                        reader.GetString(9)
+                    );
+                    agents.Add(agent);
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                dbConnector.CloseConnection();
+            }
+
 
         }
     }

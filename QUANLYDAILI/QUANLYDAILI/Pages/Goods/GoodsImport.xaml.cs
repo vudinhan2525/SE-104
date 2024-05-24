@@ -36,16 +36,16 @@ namespace QUANLYDAILI.Pages
         public event EventHandler DataSavedEvent;
 
         // Phương thức tính toán tổng tiền từ dữ liệu trong YourDataItems
-        private void CalculateTotalAmount()
+        private void CalculateTotal()
         {
-            decimal totalAmount = YourDataItems.Sum(item => item.ThanhTien);
+            double totalAmount = YourDataItems.Sum(item => (double)item.ThanhTien);
             TotalAmountTextBox.Text = totalAmount.ToString();
         }
 
         // Sự kiện xảy ra khi dữ liệu trong YourDataItems thay đổi
         private void YourDataItems_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            CalculateTotalAmount();
+
         }
         public GoodsImport()
         {
@@ -63,6 +63,8 @@ namespace QUANLYDAILI.Pages
             // Tính toán lại cột "ThanhTien" khi chỉnh sửa dữ liệu trong cột "SoLuong" hoặc "DonGia"
             var item = (YourDataModel)e.Row.Item;
             item.CalculateTotal();
+
+            CalculateTotal();
         }
 
 
@@ -97,7 +99,7 @@ namespace QUANLYDAILI.Pages
             {
                 dbConnector.CloseConnection();
             }
-
+        
         }
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
@@ -131,6 +133,8 @@ namespace QUANLYDAILI.Pages
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
             }
+            CalculateTotal();
+
 
         }
         private void ExitButton_Click(object sender, RoutedEventArgs e)

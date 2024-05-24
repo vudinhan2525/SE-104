@@ -285,12 +285,12 @@ namespace QUANLYDAILI.Pages
         }
         private void ExportGoodsBtn_MouseEnter(object sender, MouseEventArgs e)
         {
-            DeleteStoreBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#c53030"));
+            ExportGoodsBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#dbc432"));
         }
 
         private void ExportGoodsBtn_MouseLeave(object sender, MouseEventArgs e)
         {
-            DeleteStoreBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#e53e3e"));
+            ExportGoodsBtn.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ebd234"));
         }
 
     }

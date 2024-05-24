@@ -29,6 +29,7 @@ namespace QUANLYDAILI.Pages.Agents
         private Frame _menuFrame;
         private Agent agent;
         public ObservableCollection<ExportData> YourDataItems { get; set; } = new ObservableCollection<ExportData>();
+        private List<Agent> agents = new List<Agent>();
         public event EventHandler DataSavedEvent;
         public ExportForm(Frame menuFrame, Agent a)
         {
@@ -166,6 +167,8 @@ namespace QUANLYDAILI.Pages.Agents
             CalculateTotal();
             
         }
+
+        
         protected virtual void OnDataSaved()
         {
             // Kiểm tra xem có người đăng ký sự kiện hay không

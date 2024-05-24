@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:QUANLYDAILI.Pages.Agents.Export"
+      xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ExportHistory">
@@ -49,6 +50,31 @@
                     <TextBlock FontSize="30"
                            Text="Lịch sử xuất hàng"
                            FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <TextBox Width="450"
+                             x:Name="SearchExp"
+                             Padding="22,12,22,12"
+                             FontSize="16"
+                             BorderBrush="Transparent">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius"
+                                        Value="12" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Button Height="42"
+                            Cursor="Hand"
+                            Background="White"
+                            Click="SearchBtn_Click"
+                            VerticalAlignment="Center">
+                        <fa:ImageAwesome Icon="Search"
+                                         Width="50"
+                                         Height="22"
+                                         x:Name="SearchIcon" />
+                    </Button>
                 </StackPanel>
                 <DataGrid x:Name="ExportHistoryDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding}">
                     <DataGrid.Columns>
