@@ -256,6 +256,7 @@
                                 </StackPanel>
                             </Button>
                         </StackPanel>
+
                         <StackPanel DockPanel.Dock="Top">
 
                             <Button x:Name="HomeBtn"
@@ -266,6 +267,18 @@
                                     MouseEnter="Button_MouseEnter"
                                     MouseLeave="Button_MouseLeave"
                                     Click="HomeBtn_Click">
+
+                        <!-- Phieu thu -->
+                        <!-- <StackPanel DockPanel.Dock="Top">
+
+                            <Button x:Name="ReportBtn"
+                                    Margin="10,10,10,0"
+                                    Cursor="Hand"
+                                    Click="ReportBtn_Click"
+                                    Height="50"
+                                    MouseEnter="Button_MouseEnter"
+                                    MouseLeave="Button_MouseLeave"
+                                    GotFocus="Button_GotFocus"> -->
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius"

@@ -140,5 +140,9 @@ namespace QUANLYDAILI
         {
             mainMenu.Content = new BillPage();
         }
+        private void ReportBtn_Click(object sender, RoutedEventArgs e)
+        {
+            mainMenu.Content = new Report();
+        }
     }
 }
