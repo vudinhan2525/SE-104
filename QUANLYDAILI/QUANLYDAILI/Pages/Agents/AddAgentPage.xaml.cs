@@ -224,43 +224,12 @@ namespace QUANLYDAILI.Pages
             int typeNum = Convert.ToInt32(word[1]);
             string[] num = DebtInp.Text.Trim().Split('.');
             int debt = Convert.ToInt32(num[0]);
-            if (typeNum == 1)
+            if (GlobalVariables.typeAgent[s.Trim()] < debt)
             {
-                if (debt > 10000000)
-                {
-                    MessageBox.Show("Đại lý loại 1 chỉ được nợ tối đa 10.000.000đ.");
-                    DebtInp.Text = "";
-                    return false;
-                }
-            }
-            if (typeNum == 2)
-            {
-
-                if (debt > 5000000)
-                {
-                    MessageBox.Show("Đại lý loại 2 chỉ được nợ tối đa 5.000.000đ.");
-                    DebtInp.Text = "";
-                    return false;
-                }
-            }            if (typeNum == 1)
-            {
-                if (debt > 10000000)
-                {
-                    MessageBox.Show("Đại lý loại 1 chỉ được nợ tối đa 10.000.000đ.");
-                    DebtInp.Text = "";
-                    return false;
-                }
-            }
-            if (typeNum == 2)
-            {
-
-                if (debt > 5000000)
-                {
-                    MessageBox.Show("Đại lý loại 2 chỉ được nợ tối đa 5.000.000đ.");
-                    DebtInp.Text = "";
-                    return false;
-                }
-            }
+                MessageBox.Show("Đại lý loại " + typeNum + " chỉ được nợ tối đa "+ GlobalVariables.typeAgent[s.Trim()] + " đ.");
+                DebtInp.Text = "";
+                return false;
+            }          
             return true;
         }
 

@@ -20,51 +20,71 @@ namespace QUANLYDAILI
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-        public static class GlobalVariables
+    public static class GlobalVariables
+    {
+        public static List<string> Districts { get; set; } = new List<string>
         {
-            public static List<string> Districts { get; set; } = new List<string>
+            "Quận 1",
+            "Quận 2",
+            "Quận 3",
+            "Quận 4",
+            "Quận 5",
+            "Quận 6",
+            "Quận 7",
+            "Quận 8",
+            "Quận 9",
+            "Quận 10",
+            "Quận 11",
+            "Quận 12",
+            "Quận 13",
+            "Quận 14",
+            "Quận 15",
+            "Quận 16",
+            "Quận 17",
+            "Quận 18",
+            "Quận 19",
+            "Quận 20"
+        };
+        public static int maxAgentPerDistrict { get; set; }
+        public static int numberOfTypeAgent { get; set; }
+
+        public static Dictionary<string, int> typeAgent = new Dictionary<string, int>();
+        public static List<int> maxDebtOfAgent = new List<int>();
+        public static void updateMap()
+        {
+            for (int i = 1; i <= numberOfTypeAgent; i++)
             {
-                "Quận 1",
-                "Quận 2",
-                "Quận 3",
-                "Quận 4",
-                "Quận 5",
-                "Quận 6",
-                "Quận 7",
-                "Quận 8",
-                "Quận 9",
-                "Quận 10",
-                "Quận 11",
-                "Quận 12",
-                "Quận 13",
-                "Quận 14",
-                "Quận 15",
-                "Quận 16",
-                "Quận 17",
-                "Quận 18",
-                "Quận 19",
-                "Quận 20"
-            };
-            public static int maxAgentPerDistrict { get; set; }
+                string s = "Loại " + i;
+                typeAgent[s] = maxDebtOfAgent[i - 1];
+            }
         }
-        public partial class MainWindow : Window
-        {
-            private DatabaseConnector dbConnector = new DatabaseConnector();
+
+
+
+    }
+    public partial class MainWindow : Window
+    {
+        private DatabaseConnector dbConnector = new DatabaseConnector();
         
-            public Frame GetMainFrame()
-            {
-                return Main;
-            }
-            public MainWindow()
-            {
-                InitializeComponent();
-                GlobalVariables.maxAgentPerDistrict = 4;
-                var mainPage = new MainPage();
-                Main.Content = mainPage;
-
-            }
+        public Frame GetMainFrame()
+        {
+            return Main;
+        }
+        public MainWindow()
+        {
+            InitializeComponent();
+            GlobalVariables.maxAgentPerDistrict = 4;
+            GlobalVariables.numberOfTypeAgent = 2;
+            GlobalVariables.maxDebtOfAgent.Add(10000000);
+            GlobalVariables.maxDebtOfAgent.Add(5000000);
+            GlobalVariables.updateMap();
+            var mainPage = new MainPage();
+            Main.Content = mainPage;
 
         }
+            
+
+    }
     public class DoanhThuItem
     {
         public int STT { get; set; }
