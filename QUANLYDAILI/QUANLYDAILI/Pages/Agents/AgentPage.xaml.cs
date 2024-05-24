@@ -192,16 +192,16 @@ public partial class AgentPage : Page
                 while (reader.Read())
                 {
                     Agent agent = new Agent(
-                        reader.GetInt32(0),
-                        reader.GetString(1),
-                        reader.GetString(2),
-                        reader.GetString(3),
-                        reader.GetString(4),
-                        reader.GetString(5),
-                        reader.GetByte(6),
-                        reader.GetDateTime(7).ToString("yyyy-MM-dd"),
-                        reader.GetDecimal(8),
-                        reader.GetString(9)
+                        reader.GetInt32(reader.GetOrdinal("MaDaiLy")),
+                        reader.GetString(reader.GetOrdinal("TenDaiLy")),
+                        reader.GetString(reader.GetOrdinal("SoDienThoai")),
+                        reader.GetString(reader.GetOrdinal("Quan")),
+                        reader.GetString(reader.GetOrdinal("Avatar")),
+                        reader.GetString(reader.GetOrdinal("DiaChi")),
+                        reader.GetByte(reader.GetOrdinal("Loai")),
+                        reader.GetDateTime(reader.GetOrdinal("NgayTiepNhan")).ToString("yyyy-MM-dd"),
+                        reader.GetDecimal(reader.GetOrdinal("KhoanNo")),
+                        reader.GetString(reader.GetOrdinal("Email"))
                     );
                     agents.Add(agent);
                 }

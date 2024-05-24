@@ -20,22 +20,51 @@ namespace QUANLYDAILI
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        private DatabaseConnector dbConnector = new DatabaseConnector();
-        public Frame GetMainFrame()
+        public static class GlobalVariables
         {
-            return Main;
+            public static List<string> Districts { get; set; } = new List<string>
+            {
+                "Quận 1",
+                "Quận 2",
+                "Quận 3",
+                "Quận 4",
+                "Quận 5",
+                "Quận 6",
+                "Quận 7",
+                "Quận 8",
+                "Quận 9",
+                "Quận 10",
+                "Quận 11",
+                "Quận 12",
+                "Quận 13",
+                "Quận 14",
+                "Quận 15",
+                "Quận 16",
+                "Quận 17",
+                "Quận 18",
+                "Quận 19",
+                "Quận 20"
+            };
+            public static int maxAgentPerDistrict { get; set; }
         }
-        public MainWindow()
+        public partial class MainWindow : Window
         {
-            InitializeComponent();
-            var mainPage = new MainPage();
-            Main.Content = mainPage;
+            private DatabaseConnector dbConnector = new DatabaseConnector();
+        
+            public Frame GetMainFrame()
+            {
+                return Main;
+            }
+            public MainWindow()
+            {
+                InitializeComponent();
+                GlobalVariables.maxAgentPerDistrict = 4;
+                var mainPage = new MainPage();
+                Main.Content = mainPage;
+
+            }
 
         }
-
-    }
     public class DoanhThuItem
     {
         public int STT { get; set; }

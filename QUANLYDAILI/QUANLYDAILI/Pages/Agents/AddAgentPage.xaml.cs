@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,13 +37,26 @@ namespace QUANLYDAILI.Pages
             TypeInp.Items.Add("Loại 1");
             TypeInp.Items.Add("Loại 2");
             TypeInp.SelectedIndex = 0;
+            for(int i = 0; i < GlobalVariables.Districts.Count; i++)
+            {
+                DistrictComboBox.Items.Add(GlobalVariables.Districts[i]);
+            }
+            DistrictComboBox.SelectedIndex = 0;
             if (a.MaDaiLy != 0)
             {
                 agent = a;
                 isModified = true;
                 NameInp.Text = a.TenDaiLy;
                 SDTInp.Text = a.SoDienThoai;
-                DistrictInp.Text = a.Quan;
+                
+                for(int j = 0;j < GlobalVariables.Districts.Count; j++)
+                {
+                    if (GlobalVariables.Districts[j] == a.Quan)
+                    {
+                        DistrictComboBox.SelectedIndex=j;
+                        break;
+                    }
+                }
                 CityInp.Text = a.DiaChi;
                 AvatarInp.Text = a.Avatar;
                 DebtInp.Text = a.KhoanNo.ToString();
@@ -74,7 +90,7 @@ namespace QUANLYDAILI.Pages
 
         private void AddStoreBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (NameInp.Text.Trim() == "" || TypeInp.Text.Trim() == "" || SDTInp.Text.Trim() == "" || DistrictInp.Text.Trim() == "" || CityInp.Text.Trim() == "" || AvatarInp.Text.Trim() == "" || DebtInp.Text.Trim() == "" || EmailInp.Text.Trim() == "")
+            if (NameInp.Text.Trim() == "" || TypeInp.Text.Trim() == "" || SDTInp.Text.Trim() == "" || DistrictComboBox.SelectedItem.ToString() == "" || CityInp.Text.Trim() == "" || AvatarInp.Text.Trim() == "" || DebtInp.Text.Trim() == "" || EmailInp.Text.Trim() == "")
             {
                 return;
             }
@@ -86,7 +102,35 @@ namespace QUANLYDAILI.Pages
             int typeNum = Int32.Parse(word[1]);
             string[] num = DebtInp.Text.Trim().Split('.');
             int debt = Int32.Parse(num[0]);
+            
+            try
+            {
+                dbConnector.OpenConnection();
+                string fQuery = "SELECT COUNT(*) as Soluong FROM DaiLy WHERE Quan = N'" + DistrictComboBox.SelectedItem.ToString() + "'";
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = fQuery;
+                sql.Connection = dbConnector.sqlCon;
+                SqlDataReader reader2 = sql.ExecuteReader();
+                while (reader2.Read())
+                {
+                    int c = reader2.GetInt32(reader2.GetOrdinal("Soluong"));
+                    if (c >= GlobalVariables.maxAgentPerDistrict)
+                    {
+                        MessageBox.Show("Quận này đã đủ " + GlobalVariables.maxAgentPerDistrict + " đại lý.");
+                        return;
+                    }
+                }
+                reader2.Close();
+            }
+            catch
+            {
 
+            }
+            finally
+            {
+                dbConnector.CloseConnection();
+            }
+            
             if (!isModified)
             {
                 string query = "INSERT INTO Daily(TenDaiLy, SoDienThoai, Quan, Avatar, DiaChi, Loai, NgayTiepNhan, KhoanNo, Email) VALUES (@TenDaiLy, @SoDienThoai, @Quan, @Avatar, @DiaChi, @Loai, @NgayTiepNhan, @KhoanNo, @Email)";
@@ -98,7 +142,7 @@ namespace QUANLYDAILI.Pages
                     sqlCmd.Connection = dbConnector.sqlCon;
                     sqlCmd.Parameters.AddWithValue("@TenDaiLy", NameInp.Text.Trim());
                     sqlCmd.Parameters.AddWithValue("@SoDienThoai", SDTInp.Text.Trim());
-                    sqlCmd.Parameters.AddWithValue("@Quan", DistrictInp.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Quan", DistrictComboBox.SelectedItem.ToString());
                     sqlCmd.Parameters.AddWithValue("@Avatar", AvatarInp.Text.Trim());
                     sqlCmd.Parameters.AddWithValue("@DiaChi", CityInp.Text.Trim());
                     sqlCmd.Parameters.AddWithValue("@Loai", typeNum); 
@@ -136,7 +180,7 @@ namespace QUANLYDAILI.Pages
                     sqlCmd.Connection = dbConnector.sqlCon;
                     sqlCmd.Parameters.AddWithValue("@TenDaiLy", NameInp.Text.Trim());
                     sqlCmd.Parameters.AddWithValue("@SoDienThoai", SDTInp.Text.Trim());
-                    sqlCmd.Parameters.AddWithValue("@Quan", DistrictInp.Text.Trim());
+                    sqlCmd.Parameters.AddWithValue("@Quan", DistrictComboBox.SelectedItem.ToString());
                     sqlCmd.Parameters.AddWithValue("@Avatar", AvatarInp.Text.Trim());
                     sqlCmd.Parameters.AddWithValue("@DiaChi", CityInp.Text.Trim());
                     sqlCmd.Parameters.AddWithValue("@Loai", typeNum);

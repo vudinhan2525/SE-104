@@ -67,13 +67,15 @@ namespace QUANLYDAILI.Pages.Statistics
             command.Parameters.AddWithValue("@monthInp",MonthCombobox.SelectedIndex + 1);
             SqlDataReader reader = command.ExecuteReader();
             DoanhThuTable.Items.Clear();
+            int i = 1;
             while (reader.Read())
             {
-                string s = reader.GetString(0);
-                int c = reader.GetInt32(1);
-                decimal d = reader.GetDecimal(2);
+                string s = reader.GetString(reader.GetOrdinal("TenDaiLy"));
+                int c = reader.GetInt32(reader.GetOrdinal("SoPhieuXuat"));
+                decimal d = reader.GetDecimal(reader.GetOrdinal("TongTriGia"));
                 decimal percent = d * 100 / sum;
-                DoanhThuItem item = new DoanhThuItem(1, s, c, d, percent);
+                DoanhThuItem item = new DoanhThuItem(i, s, c, d, percent);
+                i++;
                 DoanhThuTable.Items.Add(item);
             }
             reader.Close();
