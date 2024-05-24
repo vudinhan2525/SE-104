@@ -74,41 +74,6 @@
                                    Height="1" />
                         <!--Menu Button -->
                         <!-- Home -->
-                        <StackPanel DockPanel.Dock="Top">
-
-                            <Button x:Name="HomeBtn"
-                                    Cursor="Hand"
-                                    Margin="10,0,10,0"
-                                    Height="50"
-                                    GotFocus="Button_GotFocus"
-                                    MouseEnter="Button_MouseEnter"
-                                    MouseLeave="Button_MouseLeave"
-                                    Click="HomeBtn_Click">
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius"
-                                                Value="7" />
-                                    </Style>
-                                </Button.Resources>
-                                <StackPanel Orientation="Horizontal"
-                                            Height="36"
-                                            MinWidth="70">
-                                    <fa:ImageAwesome Icon="Home"
-                                                     Width="22"
-                                                     Height="22"
-                                                     x:Name="HomeIcon" />
-                                    <TextBlock Text="Home"
-                                               Width="55"
-                                               LineHeight="32"
-                                               Height="32"
-                                               Margin="4,7,0,0"
-                                               TextAlignment="Center"
-                                               RenderTransformOrigin="0.5,0.742"
-                                               FontWeight="Bold"
-                                               FontSize="16" />
-                                </StackPanel>
-                            </Button>
-                        </StackPanel>
                         <!--Agents-->
                         <StackPanel DockPanel.Dock="Top">
                             <Button x:Name="AgentBtn"
@@ -285,6 +250,42 @@
                                                Padding="2,0,0,0"
                                                Height="32"
                                                TextAlignment="Left"
+                                               RenderTransformOrigin="0.5,0.742"
+                                               FontWeight="Bold"
+                                               FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel DockPanel.Dock="Top">
+
+                            <Button x:Name="HomeBtn"
+                                    Cursor="Hand"
+                                    Margin="10,10,10,0"
+                                    Height="50"
+                                    GotFocus="Button_GotFocus"
+                                    MouseEnter="Button_MouseEnter"
+                                    MouseLeave="Button_MouseLeave"
+                                    Click="HomeBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius"
+                                                Value="7" />
+                                    </Style>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal"
+                                            Height="36"
+                                            MinWidth="70"
+                                            Margin="15,0,0,0">
+                                    <fa:ImageAwesome Icon="BarChart"
+                                                     Width="22"
+                                                     Height="22"
+                                                     x:Name="HomeIcon" />
+                                    <TextBlock Text="Statistics"
+                                               Width="70"
+                                               LineHeight="32"
+                                               Height="32"
+                                               Margin="4,7,0,0"
+                                               TextAlignment="Center"
                                                RenderTransformOrigin="0.5,0.742"
                                                FontWeight="Bold"
                                                FontSize="16" />

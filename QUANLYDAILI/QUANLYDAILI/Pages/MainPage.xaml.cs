@@ -17,6 +17,7 @@ using System.Collections.ObjectModel;
 using FontAwesome.WPF;
 using QUANLYDAILI.Pages.Bills;
 using QUANLYDAILI.Pages.Agents.Export;
+using QUANLYDAILI.Pages.Statistics;
 
 namespace QUANLYDAILI
 {
@@ -122,7 +123,7 @@ namespace QUANLYDAILI
         
         private void HomeBtn_Click(object sender, RoutedEventArgs e)
         {
-            mainMenu.Content = new MainPage();
+            mainMenu.Content = new StatisticsPage();
         }
 
         private void ImportBtn_Click(object sender, RoutedEventArgs e)

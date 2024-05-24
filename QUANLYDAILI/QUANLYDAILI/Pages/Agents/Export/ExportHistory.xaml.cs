@@ -45,7 +45,6 @@ namespace QUANLYDAILI.Pages.Agents.Export
                     // Tạo một DataTable để chứa dữ liệu từ cơ sở dữ liệu
                     DataTable dataTable = new DataTable();
                     dataTable.Load(reader);
-
                     ExportHistoryDataGrid.ItemsSource = dataTable.DefaultView;
                 }
             }

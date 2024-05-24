@@ -1,0 +1,149 @@
+﻿<Page x:Class="QUANLYDAILI.Pages.Statistics.StatisticsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
+      mc:Ignorable="d"
+      d:DesignHeight="450"
+      d:DesignWidth="800"
+      Title="BillPage">
+    <Page.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background"
+                    Value="#0194F3" />
+            <!-- Default background color -->
+            <Setter Property="Foreground"
+                    Value="#ffffff" />
+            <!-- Default foreground color -->
+            <Setter Property="FontSize"
+                    Value="16" />
+            <!-- Default font size -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="7">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="#0078D4" />
+
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Border Padding="20,0,0,0"
+                Background="#F6F8FA">
+            <StackPanel x:Name="mainPanel">
+                <StackPanel Margin="0,0,0,20"
+                            HorizontalAlignment="Left">
+                    <TextBlock FontSize="30"
+                               Text="Thống kê"
+                               FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center">
+                    <TextBox Width="450"
+                             x:Name="SearchBill"
+                             Padding="22,12,22,12"
+                             FontSize="16"
+                             BorderBrush="Transparent">
+                        <TextBox.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius"
+                                        Value="12" />
+                            </Style>
+                        </TextBox.Resources>
+                    </TextBox>
+                    <Button Height="42"
+                            Cursor="Hand"
+                            Background="White"
+                            VerticalAlignment="Center">
+                        <fa:ImageAwesome Icon="Search"
+                                         Width="50"
+                                         Height="22"
+                                         x:Name="SearchIcon" />
+                    </Button>
+                </StackPanel>
+                <StackPanel Margin="0,40,0,20"
+                            HorizontalAlignment="Left">
+                    <TextBlock FontSize="22"
+                               Text="Báo cáo doanh thu"
+                               FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+                <Grid Margin="40,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="40px" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"
+                               FontWeight="SemiBold"
+                               FontSize="16"
+                               Text="Tháng" />
+                    <TextBlock Grid.Column="2"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               Text="Năm" />
+                </Grid>
+                <Grid Margin="40,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="40px" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Column="0"
+                              Background="White"
+                              x:Name="MonthCombobox"
+                              FontSize="14"
+                              Padding="20,10,20,10"
+                              SelectionChanged="MonthCombobox_SelectionChanged"
+                              BorderBrush="White" />
+                    <ComboBox Grid.Column="2"
+                              Background="White"
+                              x:Name="YearCombobox"
+                              SelectionChanged="YearCombobox_SelectionChanged"
+                              FontSize="14"
+                              Padding="20,10,20,10"
+                              BorderBrush="White" />
+                </Grid>
+                <DataGrid Margin="40,10,40,0"
+                          RowHeight="30"
+                          x:Name="DoanhThuTable"
+                          Padding="20,10,20,10"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="STT"
+                                            Width="80"
+                                            Binding="{Binding Path=STT}" />
+                        <DataGridTextColumn Header="Tên đại lý"
+                                            Width="220"
+                                            Binding="{Binding Path=TenDaiLy, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Số phiếu xuất"
+                                            Width="*"
+                                            Binding="{Binding Path=SoPhieuXuat, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Tổng trị giá"
+                                            Width="*"
+                                            Binding="{Binding Path=TongTriGia, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Tỷ lệ"
+                                            Width="*"
+                                            Binding="{Binding Path=TyLe, Mode=TwoWay}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

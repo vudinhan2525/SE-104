@@ -97,4 +97,5 @@ namespace QUANLYDAILI.Pages
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+   
 }
