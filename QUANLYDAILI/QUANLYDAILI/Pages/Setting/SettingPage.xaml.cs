@@ -26,6 +26,7 @@ namespace QUANLYDAILI.Pages.Setting
             InitializeComponent();
             NumberAgentInp.Text = GlobalVariables.maxAgentPerDistrict.ToString();
             NumberOfTypeInp.Text = GlobalVariables.numberOfTypeAgent.ToString();
+            PercentInp.Text = GlobalVariables.PhanTram.ToString();
             renderType();
         }
         private void renderType()
@@ -122,6 +123,12 @@ namespace QUANLYDAILI.Pages.Setting
             TextBox textBox = null;
             textBoxDictionary.TryGetValue(id, out textBox);
             return textBox;
+        }
+
+        private void ChangePercentBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GlobalVariables.PhanTram = Int32.Parse(PercentInp.Text);
+            MessageBox.Show("Cập nhật thành công.");
         }
     }
 }

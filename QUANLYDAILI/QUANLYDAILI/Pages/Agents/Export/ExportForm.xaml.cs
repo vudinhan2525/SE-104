@@ -161,7 +161,7 @@ namespace QUANLYDAILI.Pages.Agents
                                 return;
                             }
                             // Ensure that the data types match the expected types in the database
-                            item.DonGia = reader.GetDecimal(reader.GetOrdinal("Gia")); // Retrieve the decimal value from the Gia column
+                            item.DonGia = reader.GetDecimal(reader.GetOrdinal("Gia")) * GlobalVariables.PhanTram / 100; // Retrieve the decimal value from the Gia column
                             item.DonViTinh = reader.GetString(reader.GetOrdinal("DonViTinh")); // Retrieve the string value from the DonViTinh column
                         }
                     }

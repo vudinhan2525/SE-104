@@ -22,6 +22,7 @@ namespace QUANLYDAILI
     /// </summary>
     public static class GlobalVariables
     {
+        public static int PhanTram { get; set; }
         public static List<string> Districts { get; set; } = new List<string>
         {
             "Quận 1",
@@ -74,6 +75,7 @@ namespace QUANLYDAILI
         public MainWindow()
         {
             InitializeComponent();
+            GlobalVariables.PhanTram = 102;
             GlobalVariables.maxAgentPerDistrict = 4;
             GlobalVariables.numberOfTypeAgent = 2;
             GlobalVariables.maxDebtOfAgent.Add(10000000);
