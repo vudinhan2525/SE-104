@@ -97,7 +97,7 @@
                                                      Width="22"
                                                      Height="22"
                                                      x:Name="AgentIcon" />
-                                    <TextBlock Text="Agents"
+                                    <TextBlock Text="Đại lý"
                                                Width="55"
                                                LineHeight="32"
                                                Height="32"
@@ -127,13 +127,14 @@
                                 </Button.Resources>
                                 <StackPanel Orientation="Horizontal"
                                             Height="36"
+                                            Margin="20,0,0,0"
                                             MinWidth="70">
                                     <fa:ImageAwesome Icon="Archive"
                                                      Width="22"
                                                      Height="22"
                                                      x:Name="GoodsIcon" />
-                                    <TextBlock Text="Goods"
-                                               Width="55"
+                                    <TextBlock Text="Hàng hóa"
+                                               Width="75"
                                                LineHeight="32"
                                                Height="32"
                                                Margin="4,7,0,0"
@@ -163,14 +164,15 @@
                                 </Button.Resources>
                                 <StackPanel Orientation="Horizontal"
                                             Height="36"
+                                            Margin="25,0,0,0"
                                             MinWidth="70">
                                     <fa:ImageAwesome Icon="ArrowCircleDown"
                                                      Width="22"
                                                      Height="22"
                                                      x:Name="ImportIcon" />
                                     <TextBlock x:Name="ImportBtn1"
-                                               Text="Import"
-                                               Width="55"
+                                               Text="Phiếu nhập"
+                                               Width="84"
                                                LineHeight="32"
                                                Margin="4,7,0,0"
                                                Height="32"
@@ -200,14 +202,15 @@
                                 </Button.Resources>
                                 <StackPanel Orientation="Horizontal"
                                             Height="36"
+                                            Margin="20,0,0,0"
                                             MinWidth="70">
                                     <fa:ImageAwesome Icon="ArrowCircleUp"
                                                      Width="22"
                                                      Height="22"
                                                      x:Name="ExportIcon" />
                                     <TextBlock x:Name="ExportBtn1"
-                                               Text="Export"
-                                               Width="55"
+                                               Text="Phiếu xuất"
+                                               Width="82"
                                                LineHeight="32"
                                                Margin="4,7,0,0"
                                                Height="32"
@@ -237,14 +240,15 @@
                                 </Button.Resources>
                                 <StackPanel Orientation="Horizontal"
                                             Height="36"
+                                            Margin="20,0,0,0"
                                             MinWidth="70">
                                     <fa:ImageAwesome Icon="FileText"
                                                      Width="22"
                                                      Height="22"
                                                      x:Name="BillIcon" />
                                     <TextBlock x:Name="BillBtn2"
-                                               Text="Bills"
-                                               Width="55"
+                                               Text="Phiếu thu"
+                                               Width="80"
                                                LineHeight="32"
                                                Margin="4,7,0,0"
                                                Padding="2,0,0,0"
@@ -293,7 +297,7 @@
                                                      Width="22"
                                                      Height="22"
                                                      x:Name="HomeIcon" />
-                                    <TextBlock Text="Statistics"
+                                    <TextBlock Text="Thống kê"
                                                Width="70"
                                                LineHeight="32"
                                                Height="32"
@@ -305,6 +309,43 @@
                                 </StackPanel>
                             </Button>
                         </StackPanel>
+                        <StackPanel DockPanel.Dock="Top">
+
+                            <Button x:Name="SettingBtn"
+                                    Cursor="Hand"
+                                    Margin="10,10,10,0"
+                                    Height="50"
+                                    GotFocus="Button_GotFocus"
+                                    MouseEnter="Button_MouseEnter"
+                                    MouseLeave="Button_MouseLeave"
+                                    Click="SettingBtn_Click">
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius"
+                                                Value="7" />
+                                    </Style>
+                                </Button.Resources>
+                                <StackPanel Orientation="Horizontal"
+                                            Height="36"
+                                            MinWidth="70"
+                                            Margin="15,0,0,0">
+                                    <fa:ImageAwesome Icon="Gear"
+                                                     Width="22"
+                                                     Height="22"
+                                                     x:Name="SettingIcon" />
+                                    <TextBlock Text="Cài đặt"
+                                               Width="70"
+                                               LineHeight="32"
+                                               Height="32"
+                                               Margin="0,7,10,0"
+                                               TextAlignment="Center"
+                                               RenderTransformOrigin="0.5,0.742"
+                                               FontWeight="Bold"
+                                               FontSize="16" />
+                                </StackPanel>
+                            </Button>
+                        </StackPanel>
+
                     </DockPanel>
                 </Border>
 

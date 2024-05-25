@@ -32,11 +32,11 @@
                             FontSize="28"
                             FontWeight="Bold" />
                 <TextBlock TextWrapping="Wrap"
-                           Text="User Name"
+                           Text="Tên đăng nhập"
                            FontSize="18"
                            FontWeight="SemiBold"
-                           Width="98"
-                           Height="20"
+                           Width="140"
+                           Height="25"
                            HorizontalAlignment="Left"
                            Margin="0,30,0,0" />
                 <TextBox x:Name="usernameTextBox"
@@ -44,7 +44,7 @@
                          HorizontalAlignment="Left"
                          BorderThickness="0,0,0,1"
                          TextAlignment="Left"
-                         Margin="0,20,0,0"
+                         Margin="0,15,0,0"
                          TextWrapping="Wrap"
                          Text="Username"
                          VerticalAlignment="Top"
@@ -53,7 +53,7 @@
                          Width="410"
                          GotFocus="usernameTextBox_GotFocus" />
                 <TextBlock TextWrapping="Wrap"
-                           Text="Password"
+                           Text="Mật khẩu"
                            FontSize="18"
                            FontWeight="SemiBold"
                            Margin="0,20,0,0" />
@@ -74,7 +74,7 @@
                            Text="Username or password is not correct"
                            Visibility="Collapsed"></TextBlock>
                 <Button x:Name="LoginBtn"
-                        Content="Login"
+                        Content="Đăng nhập"
                         Cursor="Hand"
                         Foreground="White"
                         Background="Black"

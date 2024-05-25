@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:QUANLYDAILI"
         xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Title="Phân mềm quản lý đại lí"
         Height="1200"
         Width="1200">
     

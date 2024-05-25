@@ -18,6 +18,7 @@ using FontAwesome.WPF;
 using QUANLYDAILI.Pages.Bills;
 using QUANLYDAILI.Pages.Agents.Export;
 using QUANLYDAILI.Pages.Statistics;
+using QUANLYDAILI.Pages.Setting;
 
 namespace QUANLYDAILI
 {
@@ -34,6 +35,7 @@ namespace QUANLYDAILI
         {
             InitializeComponent();
             tmpBtn = HomeBtn;
+            mainMenu.Content = new AgentPage(mainMenu);
         }
         private void Button_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -73,6 +75,7 @@ namespace QUANLYDAILI
                 if (btnId == "ImportBtn") res = "ImportIcon";
                 if (btnId == "ExportBtn") res = "ExportIcon";
                 if (btnId == "BillBtn") res = "BillIcon";
+                if (btnId == "SettingBtn") res = "SettingIcon";
                 if (stackPanel != null)
                 {
                
@@ -98,6 +101,7 @@ namespace QUANLYDAILI
                 if (btnId == "ImportBtn") res = "ImportIcon";
                 if (btnId == "ExportBtn") res = "ExportIcon";
                 if (btnId == "BillBtn") res = "BillIcon";
+                if (btnId == "SettingBtn") res = "SettingIcon";
                 if (stackPanel != null)
                 {
 
@@ -145,6 +149,11 @@ namespace QUANLYDAILI
         private void ReportBtn_Click(object sender, RoutedEventArgs e)
         {
             mainMenu.Content = new Report();
+        }
+
+        private void SettingBtn_Click(object sender, RoutedEventArgs e)
+        {
+            mainMenu.Content = new SettingPage();
         }
     }
 }

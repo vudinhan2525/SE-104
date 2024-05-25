@@ -72,7 +72,7 @@
                 Background="#F6F8FA">
             <StackPanel>
                 <DockPanel>
-                    <TextBlock Text="Stores"
+                    <TextBlock Text="Đại lý"
                                FontWeight="SemiBold"
                                FontSize="28"
                                Margin="0,7,0,0" />
@@ -89,7 +89,7 @@
                             </Style>
                         </Button.Resources>
                         <DockPanel Height="36"
-                                   Width="130">
+                                   Width="140">
                             <fa:ImageAwesome Icon="PlusCircle"
                                              Width="22"
                                              Height="22"
@@ -97,8 +97,8 @@
                                              Foreground="#ffffff"
                                              x:Name="ImportIcon" />
                             <TextBlock x:Name="AddStoreBtn"
-                                       Text="Add Store"
-                                       Width="80"
+                                       Text="Thêm đại lý"
+                                       Width="90"
                                        LineHeight="32"
                                        Margin="0,7,0,0"
                                        Height="32"
@@ -109,7 +109,7 @@
                         </DockPanel>
                     </Button>
                 </DockPanel>
-                    <Border Width="500"
+                    <Border Margin="0,10,0,0" Width="500"
                             Background="White"
                             CornerRadius="12"
                             BorderBrush="#cccccc"

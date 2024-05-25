@@ -40,9 +40,11 @@
     <Compile Update="Pages\MainPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-
+    <Compile Update="Pages\Setting\SettingPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\Statistics\StatisticsPage.xaml.cs">
-    <!-- <Compile Update="Pages\Report.xaml.cs"> -->
+      <!-- <Compile Update="Pages\Report.xaml.cs"> -->
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -83,8 +85,11 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Pages\Setting\SettingPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Pages\Statistics\StatisticsPage.xaml">
-    <!-- <Page Update="Pages\Report.xaml"> -->
+      <!-- <Page Update="Pages\Report.xaml"> -->
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

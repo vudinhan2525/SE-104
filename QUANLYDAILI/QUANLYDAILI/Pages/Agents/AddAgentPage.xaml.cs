@@ -34,8 +34,11 @@ namespace QUANLYDAILI.Pages
         {
             InitializeComponent();
             _menuFrame = menuFrame;
-            TypeInp.Items.Add("Loại 1");
-            TypeInp.Items.Add("Loại 2");
+            for(int i = 0;i < GlobalVariables.numberOfTypeAgent; i++)
+            {
+                string s = "Loại " + (i + 1);
+                TypeInp.Items.Add(s);
+            }
             TypeInp.SelectedIndex = 0;
             for(int i = 0; i < GlobalVariables.Districts.Count; i++)
             {
@@ -45,6 +48,7 @@ namespace QUANLYDAILI.Pages
             if (a.MaDaiLy != 0)
             {
                 agent = a;
+                mainTitle.Text = "Cập nhật đại lý";
                 isModified = true;
                 NameInp.Text = a.TenDaiLy;
                 SDTInp.Text = a.SoDienThoai;
@@ -68,7 +72,7 @@ namespace QUANLYDAILI.Pages
                 {
                     TypeInp.SelectedIndex = 1;
                 }
-                addStoreText.Text = "Save";
+                addStoreText.Text = "Lưu đại lý";
             }
 
         }
