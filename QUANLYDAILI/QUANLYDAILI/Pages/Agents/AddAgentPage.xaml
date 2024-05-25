@@ -221,6 +221,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBox Grid.Column="0"
                              FontSize="14"
+                             IsReadOnly="True"
                              x:Name="DebtInp"
                              Padding="20,10,20,10">
                         <TextBox.Resources>

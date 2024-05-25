@@ -76,6 +76,7 @@
                                          x:Name="SearchIcon" />
                     </Button>
                 </StackPanel>
+                <StackPanel x:Name="listPanel"></StackPanel>
                 <!--<Border CornerRadius="8" Background="White" BorderBrush="#cccccc" BorderThickness="1" Padding="10,8,10,8" Margin="20,0,80,0">
 
                     <Grid>

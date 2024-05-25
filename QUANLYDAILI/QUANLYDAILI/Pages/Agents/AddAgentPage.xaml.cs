@@ -44,6 +44,7 @@ namespace QUANLYDAILI.Pages
             {
                 DistrictComboBox.Items.Add(GlobalVariables.Districts[i]);
             }
+            DebtInp.Text = "0";
             DistrictComboBox.SelectedIndex = 0;
             if (a.MaDaiLy != 0)
             {
@@ -52,8 +53,8 @@ namespace QUANLYDAILI.Pages
                 isModified = true;
                 NameInp.Text = a.TenDaiLy;
                 SDTInp.Text = a.SoDienThoai;
-                
-                for(int j = 0;j < GlobalVariables.Districts.Count; j++)
+                DebtInp.IsReadOnly = false;
+                for (int j = 0;j < GlobalVariables.Districts.Count; j++)
                 {
                     if (GlobalVariables.Districts[j] == a.Quan)
                     {
