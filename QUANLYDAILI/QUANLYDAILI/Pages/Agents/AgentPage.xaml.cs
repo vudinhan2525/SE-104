@@ -129,10 +129,17 @@ public partial class AgentPage : Page
                 textBlock2.Text = agents[i].Quan + ", " + agents[i].DiaChi;
                 stackPanel.Children.Add(textBlock2);
 
+                StackPanel tmp = new StackPanel();
+                //tmp.Orientation =  Orientation.Horizontal;
                 TextBlock textBlock4 = new TextBlock();
                 textBlock4.Text = "SDT: " + agents[i].SoDienThoai;
                 textBlock4.Margin = new Thickness(0, 5, 0, 0);
-                stackPanel.Children.Add(textBlock4);
+                tmp.Children.Add(textBlock4);
+                TextBlock textBlockTmp = new TextBlock();
+                textBlockTmp.Text = "Ngày tiếp nhận: " + agents[i].NgayTiepNhan;
+                textBlockTmp.Margin = new Thickness(0, 3, 0, 0);
+                tmp.Children.Add(textBlockTmp);
+                stackPanel.Children.Add(tmp);
 
                 TextBlock textBlock3 = new TextBlock();
                 textBlock3.Text = "Khoản nợ: " + agents[i].KhoanNo.ToString("C", CultureInfo.GetCultureInfo("vi-VN"));

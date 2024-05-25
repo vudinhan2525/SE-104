@@ -50,6 +50,12 @@ namespace QUANLYDAILI.Pages.Agents
             decimal moneyDebt = agent.KhoanNo;
             decimal moneyTaken = Decimal.Parse(TakeMoneyInp.Text.Trim());
             decimal debtLeft = moneyDebt - moneyTaken;
+            if(debtLeft < 0)
+            {
+                MessageBox.Show("Số tiền thu không được vượt quá số tiền đại lí đang nợ.");
+                TakeMoneyInp.Text = "";
+                return;
+            }
             string query = "UPDATE DaiLy SET KhoanNo=@KhoanNo WHERE MaDaiLy=@MaDaiLy";
             try
             {

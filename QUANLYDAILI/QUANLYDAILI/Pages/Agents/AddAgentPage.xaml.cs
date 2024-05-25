@@ -69,9 +69,9 @@ namespace QUANLYDAILI.Pages
                 DeleteStoreBtn.Visibility = Visibility.Visible;
                 GetMoneyStoreBtn.Visibility = Visibility.Visible;
                 ExportGoodsBtn.Visibility = Visibility.Visible;
-                if (a.Loai == 2)
+                if (a.Loai != 0)
                 {
-                    TypeInp.SelectedIndex = 1;
+                    TypeInp.SelectedIndex = a.Loai - 1;
                 }
                 addStoreText.Text = "Lưu đại lý";
             }

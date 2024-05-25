@@ -74,7 +74,7 @@ namespace QUANLYDAILI.Pages.Statistics
                 int c = reader.GetInt32(reader.GetOrdinal("SoPhieuXuat"));
                 decimal d = reader.GetDecimal(reader.GetOrdinal("TongTriGia"));
                 decimal percent = d * 100 / sum;
-                DoanhThuItem item = new DoanhThuItem(i, s, c, d, percent);
+                DoanhThuItem item = new DoanhThuItem(i, s, c, d, Math.Round(percent, 2));
                 i++;
                 DoanhThuTable.Items.Add(item);
             }

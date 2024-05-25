@@ -172,7 +172,9 @@
                                                FontWeight="Bold"></TextBlock>
                                     <TextBlock Text="Hoan Kiem, Ha Noi"></TextBlock>
                                     <TextBlock Text="SDT : 0867880734"
-                                               Margin="0,5,0,0"></TextBlock>
+                                                   Margin="0,5,0,0"></TextBlock>
+                                    <TextBlock  Text="Ngày tiếp nhận: 17/10/2004"
+                                                Margin="0,3,0,0"></TextBlock>
                                     <TextBlock Text="Khoản nợ: 5.000.000 VND"
                                                Margin="0,7,0,4"
                                                FontSize="14"

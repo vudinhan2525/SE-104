@@ -34,7 +34,7 @@ namespace QUANLYDAILI.Pages.Agents
         public ExportForm(Frame menuFrame, Agent a)
         {
             InitializeComponent();
-            
+            _menuFrame = menuFrame;
             if (a.MaDaiLy != 0)
             {
 
@@ -80,12 +80,20 @@ namespace QUANLYDAILI.Pages.Agents
 
         private void SaveDataToDatabase(DateTime ngayLapPhieu)
         {
+           
             dbConnector.OpenConnection();
             try
             {
                 foreach (ExportData item in YourDataItems)
                 {
                     decimal thanhtien = item.DonGia * item.SoLuong;
+                    decimal newDebt = thanhtien + agent.KhoanNo;
+                    string type = "Loại " + agent.Loai.ToString();
+                    if (newDebt > GlobalVariables.typeAgent[type])
+                    {
+                        MessageBox.Show("Đại lý loại " + agent.Loai + " chỉ được nợ tối đa " + GlobalVariables.typeAgent[type] + " đ.");
+                        return;
+                    }
                     string query = "INSERT INTO PhieuXuat (MaMatHang, MaDaiLy, DonViTinh, NgayLapPhieu, SoLuong, DonGia, ThanhTien)" +
                                    "VALUES (@MaMatHang,@MaDaiLy,  @DonViTinh, @NgayLapPhieu, @SoLuong, @DonGia, @ThanhTien)";
                     SqlCommand command = new SqlCommand(query, dbConnector.sqlCon);
@@ -99,6 +107,17 @@ namespace QUANLYDAILI.Pages.Agents
                     command.Parameters.AddWithValue("@SoLuong", item.SoLuong);
                     command.Parameters.AddWithValue("@ThanhTien", thanhtien);
                     command.ExecuteNonQuery();
+
+                    
+                    string newQuery = "UPDATE DaiLy SET KhoanNo= @KhoanNo WHERE MaDaiLy = @MaDaiLy";
+                    SqlCommand command2 = new SqlCommand(newQuery, dbConnector.sqlCon);
+                    command2.Parameters.AddWithValue("@MaDaiLy", agent.MaDaiLy);
+                    command2.Parameters.AddWithValue("@KhoanNo", newDebt);
+                    int rowAffected = command2.ExecuteNonQuery();
+
+                    MessageBox.Show("Xuất hàng thành công.");
+                    _menuFrame.Content = new AgentPage(_menuFrame);
+
                 }
             }
             catch (Exception ex)
@@ -137,9 +156,8 @@ namespace QUANLYDAILI.Pages.Agents
                         {
                             if(item.SoLuong > reader.GetInt32(reader.GetOrdinal("SoLuong")))
                             {
-                                MessageBox.Show("Khong du mat hang de xuat!");
+                                MessageBox.Show("Không đủ mặt hàng để xuất");
                                 item.SoLuong = 0;
-
                                 return;
                             }
                             // Ensure that the data types match the expected types in the database
