@@ -87,7 +87,7 @@ namespace QUANLYDAILI.Pages.Agents
                 foreach (ExportData item in YourDataItems)
                 {
                     decimal thanhtien = item.DonGia * item.SoLuong;
-                    decimal newDebt = thanhtien + agent.KhoanNo;
+                    decimal newDebt = Int32.Parse(RemainInp.Text) + agent.KhoanNo;
                     string type = "Loại " + agent.Loai.ToString();
                     if (newDebt > GlobalVariables.typeAgent[type])
                     {

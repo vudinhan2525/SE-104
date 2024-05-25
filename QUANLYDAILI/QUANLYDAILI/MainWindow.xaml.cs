@@ -50,9 +50,17 @@ namespace QUANLYDAILI
         public static int numberOfTypeAgent { get; set; }
         public static int maxNumberOfGoods { get; set; }
 
+        public static int numberOfUnits { get; set; }
+
+
+
+
         public static Dictionary<string, int> typeAgent = new Dictionary<string, int>();
 
         public static List<int> maxDebtOfAgent = new List<int>();
+
+        public static List<string> unitGoods = new List<string>();
+
         public static void updateMap()
         {
             for (int i = 1; i <= numberOfTypeAgent; i++)
@@ -83,7 +91,12 @@ namespace QUANLYDAILI
             GlobalVariables.maxDebtOfAgent.Add(5000000);
             GlobalVariables.maxNumberOfGoods = 5;
             GlobalVariables.updateMap();
-            var loginPage = new LoginPage(Main);
+            GlobalVariables.unitGoods.Add("Đơn vị");
+            GlobalVariables.unitGoods.Add("Kg");
+            GlobalVariables.unitGoods.Add("Lit");
+            GlobalVariables.numberOfUnits = 3;
+
+        var loginPage = new LoginPage(Main);
             Main.Content = loginPage;
 
         }

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:QUANLYDAILI.Pages.Setting"
       xmlns:fa="clr-namespace:FontAwesome.WPF;assembly=FontAwesome.WPF"
       mc:Ignorable="d"
-      d:DesignHeight="450"
+      d:DesignHeight="750"
       d:DesignWidth="800"
       Title="SettingPage">
     <Page.Resources>
@@ -52,7 +52,7 @@
                                    Text="Cài đặt"
                                    FontWeight="SemiBold"></TextBlock>
                     </StackPanel>
-                    <StackPanel >
+                    <StackPanel>
                         <StackPanel Margin="0,0,0,20"
                                     Orientation="Horizontal"
                                     VerticalAlignment="Center"
@@ -141,7 +141,7 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0"
                                         x:Name="TypeName">
-                                <TextBox></TextBox>
+
                             </StackPanel>
                             <StackPanel Grid.Column="2"
                                         x:Name="TypeDebt">
@@ -190,7 +190,114 @@
                                            FontWeight="Bold"></TextBlock>
                             </Button>
                         </StackPanel>
+                        <StackPanel Margin="0,0,0,20"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left">
+                            <Label FontSize="17"
+                                   Content="Số hàng hóa tối đa:"
+                                   VerticalAlignment="Center"
+                                   FontWeight="SemiBold"></Label>
+                            <TextBox x:Name="MaxGoodsInp"
+                                     Width="100px"
+                                     FontSize="14"
+                                     Margin="65,0,0,0"
+                                     Padding="20,10,20,10">
+                                <TextBox.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius"
+                                                Value="8" />
+                                    </Style>
+                                </TextBox.Resources>
+                            </TextBox>
+                            <Button Margin="40,0,0,0"
+                                    Cursor="Hand"
+                                    x:Name="ChangeMaxGoodsBtn"
+                                    Click="ChangeMaxGoodsBtn_Click">
+                                <TextBlock Text="Lưu"
+                                           Padding="20,10,20,10"
+                                           FontSize="18"
+                                           FontWeight="Bold"></TextBlock>
+                            </Button>
+                        </StackPanel>
+
+                        <StackPanel Margin="0,0,0,20"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left">
+                            <Label FontSize="17"
+                                   Content="Số đơn vị tính:"
+                                   VerticalAlignment="Center"
+                                   FontWeight="SemiBold"></Label>
+                            <TextBox x:Name="NumberOfUnitInp"
+                                     Width="100px"
+                                     FontSize="14"
+                                     Margin="105,0,0,0"
+                                     Padding="20,10,20,10">
+                                <TextBox.Resources>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Setter Property="CornerRadius"
+                                                Value="8" />
+                                    </Style>
+                                </TextBox.Resources>
+                            </TextBox>
+                            <Button Margin="40,0,0,0"
+                                    Cursor="Hand"
+                                    x:Name="ChangeNumberOfUnitBtn"
+                                    Click="ChangeNumberOfUnitBtn_Click">
+                                <TextBlock Text="Lưu"
+                                           Padding="20,10,20,10"
+                                           FontSize="18"
+                                           FontWeight="Bold"></TextBlock>
+                            </Button>
+                        </StackPanel>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="20px" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="2*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0">
+                                <Label FontSize="14"
+                                       FontWeight="SemiBold"
+                                       Content="Loại đơn vị tính :"></Label>
+
+                            </StackPanel>
+
+
+                        </Grid>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="45*" />
+                                <ColumnDefinition Width="140*" />
+                                <ColumnDefinition Width="20px" />
+                                <ColumnDefinition Width="186*" />
+                                <ColumnDefinition Width="372*" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0"
+                                        x:Name="UnitInp"
+                                        Grid.ColumnSpan="3"
+                                        Margin="0,0,20,0">
+
+                            </StackPanel>
+                        </Grid>
+                        <StackPanel Margin="0,0,0,10"
+                                    HorizontalAlignment="Left">
+                            <Button Margin="0,20,0,0"
+                                    x:Name="SaveUnitBtn"
+                                    Click="SaveUnitBtn_Click"
+                                    Cursor="Hand">
+                                <TextBlock Text="Lưu"
+                                           Padding="20,10,20,10"
+                                           FontSize="18"
+                                           FontWeight="Bold"></TextBlock>
+                            </Button>
+                        </StackPanel>
                     </StackPanel>
+
                 </StackPanel>
             </Border>
         </Grid>

@@ -21,18 +21,23 @@ namespace QUANLYDAILI.Pages.Setting
     public partial class SettingPage : Page
     {
         private Dictionary<string, TextBox> textBoxDictionary;
+        private Dictionary<string, TextBox> textBoxDictionary2;
         public SettingPage()
         {
             InitializeComponent();
             NumberAgentInp.Text = GlobalVariables.maxAgentPerDistrict.ToString();
             NumberOfTypeInp.Text = GlobalVariables.numberOfTypeAgent.ToString();
+            MaxGoodsInp.Text = GlobalVariables.maxNumberOfGoods.ToString();
             PercentInp.Text = GlobalVariables.PhanTram.ToString();
-            renderType();
+            NumberOfUnitInp.Text = GlobalVariables.numberOfUnits.ToString();
+                        renderType();
+            renderUnit();
         }
         private void renderType()
-        {
+        { 
             TypeName.Children.Clear();
             TypeDebt.Children.Clear();
+            
             textBoxDictionary = new Dictionary<string, TextBox>();
             for (int i = 0; i < GlobalVariables.numberOfTypeAgent; i++)
             {
@@ -73,6 +78,30 @@ namespace QUANLYDAILI.Pages.Setting
                 // Add TextBox to the main window or any container
                 // For example, assuming a StackPanel named 'stackPanel' exists in XAML
                 TypeDebt.Children.Add(textBox2);
+            }
+        }
+        private void renderUnit()
+        {
+            UnitInp.Children.Clear();
+            textBoxDictionary2 = new Dictionary<string, TextBox>();
+            for (int i = 0; i < GlobalVariables.numberOfUnits; i++)
+            {
+                TextBox textBox = new TextBox();
+                textBox.FontSize = 14;
+                textBox.IsReadOnly = false;
+                if (i != 0)
+                {
+                    textBox.Margin = new Thickness(0, 10, 0, 0);
+                }
+                string s = GlobalVariables.unitGoods[i];
+                textBox.Text = s;
+                textBox.Padding = new Thickness(20, 10, 20, 10);
+                Style borderStyle = new Style(typeof(Border));
+                borderStyle.Setters.Add(new Setter(Border.CornerRadiusProperty, new CornerRadius(8)));
+
+                textBox.Resources.Add(typeof(Border), borderStyle);
+                UnitInp.Children.Add(textBox);
+                textBoxDictionary2.Add(i.ToString(), textBox);
             }
         }
         private void ChangeNumberAgentBtn_Click(object sender, RoutedEventArgs e)
@@ -129,6 +158,54 @@ namespace QUANLYDAILI.Pages.Setting
         {
             GlobalVariables.PhanTram = Int32.Parse(PercentInp.Text);
             MessageBox.Show("Cập nhật thành công.");
+        }
+        private void ChangeMaxGoodsBtn_Click(Object sender, RoutedEventArgs e)
+        {
+            GlobalVariables.maxNumberOfGoods = Int32.Parse(MaxGoodsInp.Text);
+            MessageBox.Show("Cập nhật số lượng hàng hóa thành công.");
+        }
+
+        private void ChangeNumberOfUnitBtn_Click(Object sender, RoutedEventArgs e)
+        {
+            if (Int32.Parse(NumberOfUnitInp.Text) > GlobalVariables.numberOfUnits)
+            {
+                for (int i = GlobalVariables.numberOfUnits; i < Int32.Parse(NumberOfUnitInp.Text); i++)
+                {
+                    GlobalVariables.unitGoods.Add("");
+                }
+            }
+            else if (Int32.Parse(NumberOfUnitInp.Text) < GlobalVariables.numberOfUnits)
+            {
+                for (int i = Int32.Parse(NumberOfUnitInp.Text); i < GlobalVariables.numberOfUnits; i++)
+                {
+                    GlobalVariables.unitGoods.RemoveAt(GlobalVariables.unitGoods.Count - 1);
+                }
+            }
+            else
+            {
+
+            }
+            GlobalVariables.numberOfUnits = Int32.Parse(NumberOfUnitInp.Text);
+            renderUnit();
+            MessageBox.Show("Cập nhật số lượng đơn vị tính thành công.");
+
+            
+        }
+        private void SaveUnitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < GlobalVariables.numberOfUnits; i++)
+            {
+                TextBox tmp = GetTextBoxByID2(i.ToString());
+                GlobalVariables.unitGoods[i] = (tmp.Text);
+            }
+            
+            MessageBox.Show("Cập nhật thành công.");
+        }
+        private TextBox GetTextBoxByID2(string id)
+        {
+            TextBox textBox = null;
+            textBoxDictionary2.TryGetValue(id, out textBox);
+            return textBox;
         }
     }
 }

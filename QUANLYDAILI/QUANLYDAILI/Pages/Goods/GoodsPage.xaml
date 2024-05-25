@@ -106,10 +106,8 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment ="Left" Margin="335,60,0,114" Width="300">
                             <TextBlock Text="Don Vi Tinh: " Foreground="Black" Margin="0,0,5,0" Width="74" Visibility="Visible" />
-                            <ComboBox x:Name="DVTTxt" Text="{Binding Path= DVT }" Foreground="Black" Width="205" Margin="0,0,0,0">
-                                <ComboBoxItem Content="Đơn vị"/>
-                                <ComboBoxItem Content="Kg"/>
-                                <ComboBoxItem Content="Lít"/>
+                            <ComboBox x:Name="DVTTxt"  Foreground="Black" Width="205" Margin="0,0,0,0">
+                                
                             </ComboBox>
                         </StackPanel>
                         <StackPanel  Width="156" HorizontalAlignment="Right" Margin="0,0,0,75">
@@ -130,13 +128,7 @@
                     <DataGridTextColumn Header="Gia" Width="*" Binding="{Binding Gia}" />
                     <DataGridTextColumn Header="SoLuong" Width="*" Binding="{Binding SoLuong}" />
                     <DataGridTextColumn Header="DonViTinh" Width="*" Binding="{Binding DonViTinh}" />
-                    <DataGridTemplateColumn Header="Sửa">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Sửa" Click="EditButton_Click"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                   
                 </DataGrid.Columns>
             </DataGrid>
             <Grid>

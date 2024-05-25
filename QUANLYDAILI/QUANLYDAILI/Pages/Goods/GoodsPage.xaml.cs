@@ -31,6 +31,11 @@ namespace QUANLYDAILI.Pages
         public GoodsPage()
         {
             InitializeComponent();
+            for(int i = 0; i < GlobalVariables.numberOfUnits; i++)
+            {
+                DVTTxt.Items.Add(GlobalVariables.unitGoods[i]);
+            }
+            DVTTxt.SelectedIndex = 0;
             // Khởi tạo ObservableCollection
             GoodsCollection = new ObservableCollection<Goods>();
 
@@ -119,7 +124,7 @@ namespace QUANLYDAILI.Pages
                 DonViTinh = ((ComboBoxItem)DVTTxt.SelectedItem).Content.ToString() // Lấy giá trị từ ComboBox
             };
             GoodsDataGrid.Items.Refresh();
-            if(GoodsDataGrid.Items.Count >= GlobalVariables.maxNumberOfGoods)
+            if(GoodsDataGrid.Items.Count > GlobalVariables.maxNumberOfGoods)
             {
                 MessageBox.Show("Đã đủ số lượng hàng hóa tối đa.");
                 return;
@@ -222,10 +227,7 @@ namespace QUANLYDAILI.Pages
             DeleteSelectedItems();
 
         }
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+      
 
     }
 }
