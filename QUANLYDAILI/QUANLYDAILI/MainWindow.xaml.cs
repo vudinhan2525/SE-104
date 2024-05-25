@@ -104,4 +104,20 @@ namespace QUANLYDAILI
             TyLe = _TyLe;
         }
     }
+    public class CongNoItem
+    {
+        public int STT { get; set; }
+        public string TenDaiLy { get; set; }
+        public int NoDau { get; set; }
+        public int PhatSinh { get; set; }
+        public int NoCuoi { get; set; }
+        public CongNoItem(int _STT, string _TenDaiLy, int _NoDau, int _PhatSinh, int _NoCuoi)
+        {
+            STT = _STT;
+            TenDaiLy = _TenDaiLy;
+            NoDau = _NoDau;
+            PhatSinh = _PhatSinh;
+            NoCuoi = _NoCuoi;
+        }
+    }
 }

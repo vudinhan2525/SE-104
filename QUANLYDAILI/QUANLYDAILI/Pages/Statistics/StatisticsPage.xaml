@@ -99,8 +99,7 @@
                           x:Name="DoanhThuTable"
                           Padding="20,10,20,10"
                           AutoGenerateColumns="False"
-                          IsReadOnly="True"
-                          >
+                          IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="STT"
                                             Width="80"
@@ -117,6 +116,72 @@
                         <DataGridTextColumn Header="Tỷ lệ"
                                             Width="*"
                                             Binding="{Binding Path=TyLe, Mode=TwoWay}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Margin="0,30,0,20"
+                            HorizontalAlignment="Left">
+                    <TextBlock FontSize="22"
+                               Text="Báo cáo công nợ đại lí"
+                               FontWeight="SemiBold"></TextBlock>
+                </StackPanel>
+                <Grid Margin="40,0,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="40px" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0"
+                               FontWeight="SemiBold"
+                               FontSize="16"
+                               Text="Tháng" />
+                    <TextBlock Grid.Column="2"
+                               FontSize="16"
+                               FontWeight="SemiBold"
+                               Text="Năm" />
+                </Grid>
+                <Grid Margin="40,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="40px" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Grid.Column="0"
+                              Background="White"
+                              x:Name="Month2Combobox"
+                              FontSize="14"
+                              Padding="20,10,20,10"
+                              BorderBrush="White" />
+                    <ComboBox Grid.Column="2"
+                              Background="White"
+                              x:Name="Year2Combobox"
+                              FontSize="14"
+                              Padding="20,10,20,10"
+                              BorderBrush="White" />
+                </Grid>
+                <DataGrid Margin="40,10,40,0"
+                          RowHeight="30"
+                          x:Name="CongNoTable"
+                          Padding="20,10,20,10"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="STT"
+                                            Width="80"
+                                            Binding="{Binding Path=STT}" />
+                        <DataGridTextColumn Header="Tên đại lý"
+                                            Width="220"
+                                            Binding="{Binding Path=TenDaiLy, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Nợ đầu"
+                                            Width="*"
+                                            Binding="{Binding Path=NoDau, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Phát sinh"
+                                            Width="*"
+                                            Binding="{Binding Path=PhatSinh, Mode=TwoWay}" />
+                        <DataGridTextColumn Header="Nợ cuối"
+                                            Width="*"
+                                            Binding="{Binding Path=NoCuoi, Mode=TwoWay}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

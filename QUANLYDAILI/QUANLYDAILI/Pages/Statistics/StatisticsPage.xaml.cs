@@ -22,7 +22,6 @@ namespace QUANLYDAILI.Pages.Statistics
     /// </summary>
     public partial class StatisticsPage : Page
     {
-        List<DoanhThuItem> doanhThuItems;
         private DatabaseConnector dbConnector = new DatabaseConnector();
         private bool firstLoad { get; set; }
         private decimal sum = 0;
@@ -34,13 +33,18 @@ namespace QUANLYDAILI.Pages.Statistics
             {
                 string r = "Tháng " + i;
                 MonthCombobox.Items.Add(r);
+                Month2Combobox.Items.Add(r);
             }
-            MonthCombobox.SelectedIndex = 0;
-            for(int i = 2000;i <= 2024; i++)
+            MonthCombobox.SelectedIndex = 4;
+            Month2Combobox.SelectedIndex = 4;
+            for (int i = 2000;i <= 2024; i++)
             {
                 YearCombobox.Items.Add(i.ToString());
+                Year2Combobox.Items.Add(i.ToString());
             }
             YearCombobox.SelectedIndex = 24;
+            Year2Combobox.SelectedIndex = 24;
+
 
 
         }
@@ -83,7 +87,7 @@ namespace QUANLYDAILI.Pages.Statistics
         }
         private void MonthCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int month = MonthCombobox.SelectedIndex + 1;
+            
             if (!firstLoad)
             {
                 calcMonthly();
