@@ -57,6 +57,8 @@ namespace QUANLYDAILI.Pages
 
             // Đăng ký sự kiện CollectionChanged để theo dõi sự thay đổi trong YourDataItems
             YourDataItems.CollectionChanged += YourDataItems_CollectionChanged;
+
+            NgayLapPhieuDatePicker.SelectedDate = DateTime.Now;
         }
         private void GoodImportedDataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
@@ -87,7 +89,11 @@ namespace QUANLYDAILI.Pages
                     command.Parameters.AddWithValue("@DonGia", item.DonGia);
                     command.Parameters.AddWithValue("@SoLuong", item.SoLuong);
                     command.Parameters.AddWithValue("@ThanhTien", thanhtien);
-                    command.ExecuteNonQuery();
+                    int row = command.ExecuteNonQuery();
+                    if(row > 0)
+                    {
+                        MessageBox.Show("Thêm phiếu xuất thành công");
+                    }
                 }
             }
             catch (Exception ex)
@@ -139,8 +145,7 @@ namespace QUANLYDAILI.Pages
         }
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            // Thoát ứng dụng
-            Application.Current.Shutdown();
+            
         }
         protected virtual void OnDataSaved()
         {

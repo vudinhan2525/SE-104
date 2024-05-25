@@ -48,6 +48,7 @@ namespace QUANLYDAILI
         };
         public static int maxAgentPerDistrict { get; set; }
         public static int numberOfTypeAgent { get; set; }
+        public static int maxNumberOfGoods { get; set; }
 
         public static Dictionary<string, int> typeAgent = new Dictionary<string, int>();
 
@@ -80,6 +81,7 @@ namespace QUANLYDAILI
             GlobalVariables.numberOfTypeAgent = 2;
             GlobalVariables.maxDebtOfAgent.Add(10000000);
             GlobalVariables.maxDebtOfAgent.Add(5000000);
+            GlobalVariables.maxNumberOfGoods = 5;
             GlobalVariables.updateMap();
             var loginPage = new LoginPage(Main);
             Main.Content = loginPage;

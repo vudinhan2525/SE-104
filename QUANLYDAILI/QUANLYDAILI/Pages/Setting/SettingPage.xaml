@@ -141,6 +141,7 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0"
                                         x:Name="TypeName">
+                                <TextBox></TextBox>
                             </StackPanel>
                             <StackPanel Grid.Column="2"
                                         x:Name="TypeDebt">

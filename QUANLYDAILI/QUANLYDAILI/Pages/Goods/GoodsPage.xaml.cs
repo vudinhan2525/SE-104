@@ -95,7 +95,11 @@ namespace QUANLYDAILI.Pages
         private void AddGoods_Click(object sender, RoutedEventArgs e)
         {
             int gia, soLuong;
-
+            if(MaMatHangTxt.Text.ToString().Trim().Equals("") || TenMatHangTxt.Text.ToString().Trim().Equals("") || DonGiaTxt.Text.ToString().Trim().Equals("") || SoLuongTxt.Text.ToString().Trim().Equals("") || ((ComboBoxItem)DVTTxt.SelectedItem).Content.ToString().Equals(""))
+            {   
+                MessageBox.Show("Vui lòng nhập đày đủ dữ liệu.");
+                return;
+            }
             // Kiểm tra xem dữ liệu nhập vào từ TextBox có phải là số nguyên hay không
             if (!int.TryParse(DonGiaTxt.Text, out gia) || !int.TryParse(SoLuongTxt.Text, out soLuong))
             {
@@ -104,6 +108,8 @@ namespace QUANLYDAILI.Pages
                 return;
             }
             // Tạo một đối tượng mới từ dữ liệu được nhập từ các TextBox và ComboBox
+
+
             Goods newItem = new Goods
             {
                 MaMatHang = MaMatHangTxt.Text,
@@ -112,14 +118,12 @@ namespace QUANLYDAILI.Pages
                 SoLuong = soLuong,
                 DonViTinh = ((ComboBoxItem)DVTTxt.SelectedItem).Content.ToString() // Lấy giá trị từ ComboBox
             };
-
-
-
-
-            // Làm mới DataGrid để hiển thị các thay đổi
             GoodsDataGrid.Items.Refresh();
-
-            // Thêm vào cơ sở dữ liệu
+            if(GoodsDataGrid.Items.Count >= GlobalVariables.maxNumberOfGoods)
+            {
+                MessageBox.Show("Đã đủ số lượng hàng hóa tối đa.");
+                return;
+            }
             AddGoodsToDatabase(newItem);
         }
         private void AddGoodsToDatabase(Goods newItem)
