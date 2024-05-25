@@ -103,7 +103,11 @@ GO
 INSERT INTO MatHang( MaMatHang, TenMatHang, Gia, SoLuong, DonViTinh)
 Values ('1','GTX-3060',650000,'12','Don vi'),
 		('2','Razor Viper',160000,'24','Don vi');
-		
+INSERT INTO MatHang( MaMatHang, TenMatHang, Gia, SoLuong, DonViTinh)
+Values ('3',N'Dây chuyền đá quý',1000000,'26','Don vi')
+
+
+
 INSERT INTO DaiLy(TenDaiLy, SoDienThoai, Quan, Avatar, DiaChi, Loai, NgayTiepNhan, KhoanNo, Email)
 Values ( 'ShopDunk Official Store','123456789',N'Quận 1','https://mms.img.susercontent.com/vn-11134216-7r98o-llx8zp2z3dnj5b',N'Hồ Chí Minh',1,'2024-02-03',0,'shopdunk2@gmail.com'),
 		( 'Coolmate Store','123456789',N'Quận 10','https://mms.img.susercontent.com/vn-11134216-7r98o-lqmqpjrwbftebc_tn',N'Hồ Chí Minh',1,'2024-05-10',0,'coolmate12@gmail.com'),

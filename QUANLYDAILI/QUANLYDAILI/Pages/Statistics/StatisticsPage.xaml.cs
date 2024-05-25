@@ -1,6 +1,7 @@
 ﻿using QUANLYDAILI.Utils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -24,11 +25,13 @@ namespace QUANLYDAILI.Pages.Statistics
     {
         private DatabaseConnector dbConnector = new DatabaseConnector();
         private bool firstLoad { get; set; }
+        private bool firstLoad2 { get; set; }
         private decimal sum = 0;
         public StatisticsPage()
         {
             InitializeComponent();
             firstLoad = true;
+            firstLoad2 = true;
             for (int i = 1; i <= 12; i++)
             {
                 string r = "Tháng " + i;
@@ -47,6 +50,75 @@ namespace QUANLYDAILI.Pages.Statistics
 
 
 
+        }
+        private void calcMonthlyDebt()
+        {   
+            List<int> ids = new List<int>();
+            List<decimal> fDebts = new List<decimal>();
+            List<decimal> cDebts = new List<decimal>();
+            List<string> names = new List<string>();
+            dbConnector.OpenConnection();
+            string query = "SELECT DISTINCT * FROM DaiLy";
+            SqlCommand cmd = new SqlCommand(query,dbConnector.sqlCon);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while(reader.Read())
+            {
+                string name = reader.GetString(reader.GetOrdinal("TenDaiLy"));
+                int id = reader.GetInt32(reader.GetOrdinal("MaDaiLy"));
+                ids.Add(id);
+                names.Add(name);
+            }
+            reader.Close();
+            for(int i = 0;i < ids.Count;i++)
+            {
+                int MONTH = Month2Combobox.SelectedIndex + 1;
+                string query1 = "SELECT SUM(ThanhTien) as TongTien FROM PhieuXuat WHERE YEAR(NgayLapPhieu) < "+ Year2Combobox.SelectedItem.ToString() + " OR (YEAR(NgayLapPhieu) = "+ Year2Combobox.SelectedItem.ToString() + " AND MONTH(NgayLapPhieu) < "+ MONTH + ") AND MaDaiLy = "+ ids[i] + " ;";
+                SqlCommand cmd1 = new SqlCommand(query1, dbConnector.sqlCon);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    if (!reader1.IsDBNull(0))
+                    {
+                        decimal s = reader1.GetDecimal(0);
+                        fDebts.Add(s);
+                    }
+                    else
+                    {
+                        fDebts.Add(0);
+                    }
+                       
+                }
+                reader1.Close();
+
+            }
+            for (int i = 0; i < ids.Count; i++)
+            {
+                int MONTH = Month2Combobox.SelectedIndex + 1;
+                string query1 = "SELECT SUM(ThanhTien) as TongTien FROM PhieuXuat WHERE YEAR(NgayLapPhieu) = "+ Year2Combobox.SelectedItem.ToString() + " AND MONTH(NgayLapPhieu) = "+ MONTH + " AND MaDaiLy = " + ids[i] + " ;";
+                SqlCommand cmd1 = new SqlCommand(query1, dbConnector.sqlCon);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+                while (reader1.Read())
+                {
+                    if (!reader1.IsDBNull(0))
+                    {
+                        decimal s = reader1.GetDecimal(0);
+                        cDebts.Add(s);
+                    }
+                    else
+                    {
+                        cDebts.Add(0);
+                    }
+                }
+                reader1.Close();
+
+            }
+            dbConnector.CloseConnection();
+            CongNoTable.Items.Clear();
+            for (int i = 0; i < ids.Count; i++)
+            { 
+                CongNoItem item = new CongNoItem(i + 1, names[i], fDebts[i], cDebts[i], fDebts[i] + cDebts[i]);
+                CongNoTable.Items.Add(item);
+            }
         }
         private void calcMonthly()
         {          
@@ -106,6 +178,30 @@ namespace QUANLYDAILI.Pages.Statistics
             else
             {
                 firstLoad = false;
+            }
+        }
+
+        private void Month2Combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!firstLoad2)
+            {
+                calcMonthlyDebt();
+            }
+            else
+            {
+                firstLoad2 = false;
+            }
+        }
+
+        private void Year2Combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!firstLoad2)
+            {
+                calcMonthlyDebt();
+            }
+            else
+            {
+                firstLoad2 = false;
             }
         }
     }
