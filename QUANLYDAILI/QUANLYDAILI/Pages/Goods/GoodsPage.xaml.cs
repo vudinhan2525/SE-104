@@ -100,7 +100,7 @@ namespace QUANLYDAILI.Pages
         private void AddGoods_Click(object sender, RoutedEventArgs e)
         {
             int gia, soLuong;
-            if(MaMatHangTxt.Text.ToString().Trim().Equals("") || TenMatHangTxt.Text.ToString().Trim().Equals("") || DonGiaTxt.Text.ToString().Trim().Equals("") || SoLuongTxt.Text.ToString().Trim().Equals("") || ((ComboBoxItem)DVTTxt.SelectedItem).Content.ToString().Equals(""))
+            if(MaMatHangTxt.Text.ToString().Trim().Equals("") || TenMatHangTxt.Text.ToString().Trim().Equals("") || DonGiaTxt.Text.ToString().Trim().Equals("") || SoLuongTxt.Text.ToString().Trim().Equals("") || DVTTxt.SelectedItem.ToString().Equals(""))
             {   
                 MessageBox.Show("Vui lòng nhập đày đủ dữ liệu.");
                 return;
@@ -121,7 +121,7 @@ namespace QUANLYDAILI.Pages
                 TenMatHang = TenMatHangTxt.Text,
                 Gia = gia,
                 SoLuong = soLuong,
-                DonViTinh = ((ComboBoxItem)DVTTxt.SelectedItem).Content.ToString() // Lấy giá trị từ ComboBox
+                DonViTinh = DVTTxt.SelectedItem.ToString() // Lấy giá trị từ ComboBox
             };
             GoodsDataGrid.Items.Refresh();
             if(GoodsDataGrid.Items.Count > GlobalVariables.maxNumberOfGoods)
