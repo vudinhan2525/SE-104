@@ -115,10 +115,11 @@ namespace QUANLYDAILI.Pages.Agents
                     command2.Parameters.AddWithValue("@KhoanNo", newDebt);
                     int rowAffected = command2.ExecuteNonQuery();
 
-                    MessageBox.Show("Xuất hàng thành công.");
+                    
                     _menuFrame.Content = new AgentPage(_menuFrame);
 
                 }
+                MessageBox.Show("Xuất hàng thành công.");
             }
             catch (Exception ex)
             {

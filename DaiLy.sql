@@ -100,18 +100,26 @@ FOREIGN KEY(MaDaiLy) REFERENCES DaiLy(MaDaiLy)
 GO
 
 
-INSERT INTO MatHang( MaMatHang, TenMatHang, Gia, SoLuong, DonViTinh)
-Values ('1','GTX-3060',650000,'12','Don vi'),
-		('2','Razor Viper',160000,'24','Don vi');
-INSERT INTO MatHang( MaMatHang, TenMatHang, Gia, SoLuong, DonViTinh)
-Values ('3',N'Dây chuyền đá quý',1000000,'26','Don vi')
-
-
 
 INSERT INTO DaiLy(TenDaiLy, SoDienThoai, Quan, Avatar, DiaChi, Loai, NgayTiepNhan, KhoanNo, Email)
 Values ( 'ShopDunk Official Store','123456789',N'Quận 1','https://mms.img.susercontent.com/vn-11134216-7r98o-llx8zp2z3dnj5b',N'Hồ Chí Minh',1,'2024-02-03',0,'shopdunk2@gmail.com'),
 		( 'Coolmate Store','123456789',N'Quận 10','https://mms.img.susercontent.com/vn-11134216-7r98o-lqmqpjrwbftebc_tn',N'Hồ Chí Minh',1,'2024-05-10',0,'coolmate12@gmail.com'),
 		( 'GEAR VN STORE','123456789',N'Quận 7','https://datviettour.com.vn/uploads/images/khach-hang/Gearn/logo-gearvn.jpg',N'Hồ Chí Minh',1,'2024-05-16',0,'gearvn@gmail.com')
+
+INSERT INTO DaiLy(TenDaiLy, SoDienThoai, Quan, Avatar, DiaChi, Loai, NgayTiepNhan, KhoanNo, Email)
+Values	('Castrol', '123456789', N'Quận 13', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm9NqKgPb_S5OByuUyJjWY_LWAcyLKrtHB146g_Pg_jw&s',
+		N'Hà Nội',2,'2023-01-25', 0, 'castrol@gmail.com'),
+		('Unilevel', '123456789', N'Quận 10', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTodTRiax_k5qTkic-74zdim8npdiSTJjCARB6EOGKetA&s',
+		N'Hồ Chí Minh',1,'2023-01-18', 0, 'uni@gmail.com'),
+		(N'Trường An', '123456789', N'Quận 3', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROMbsG0UE49p_kiJY4cdguFITF-Q5CH6-8if-f6lyEFg&s',
+		N'Hồ Chí Minh',1,'2023-01-19', 0, 'truongan@gmail.com'),
+		('CHIN-SU', '123456789', N'Quận 14', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjmiy1tS9wus6pmyweJ5VHdnLy4ukdQj5J3dFwjDCbnw&s',
+		N'Thanh Hóa',2,'2023-01-20', 0, 'chinsu@gmail.com');
+
+
+		
+
+
 SELECT * FROM MatHang
 GO
 

@@ -48,7 +48,7 @@
             </Style.Triggers>
         </Style>
     </Page.Resources>
-
+    <ScrollViewer>
     <Border Background="White" CornerRadius="30" BorderBrush="Black" BorderThickness="2">
         <Grid>
             <Grid.RowDefinitions>
@@ -116,4 +116,5 @@
             </Grid>
         </Grid>
     </Border>
+    </ScrollViewer>
 </Page>

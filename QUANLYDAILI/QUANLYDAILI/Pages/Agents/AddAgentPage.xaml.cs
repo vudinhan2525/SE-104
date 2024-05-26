@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -92,9 +93,33 @@ namespace QUANLYDAILI.Pages
         {
             _menuFrame.Content = new AgentPage(_menuFrame);
         }
+        public bool IsAgentNameExists(string name, List<Agent> agents)
+        {
+            return agents.Any(agent => agent.TenDaiLy.Equals(name, StringComparison.OrdinalIgnoreCase));
+        }
+        public static bool IsValidEmail(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
 
+            // Define a regular expression pattern for a valid email address
+            string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            // Use the Regex.IsMatch method to check if the email matches the pattern
+            return Regex.IsMatch(email, pattern);
+        }
+        public static bool IsValidPhoneNumber(string phoneNumber)
+        {
+            // Regular expression to match valid phone numbers
+            string pattern = @"^\+?[0-9\s\-()]*$";
+            Regex regex = new Regex(pattern);
+
+            // Check if the input string matches the pattern
+            return regex.IsMatch(phoneNumber);
+        }
         private void AddStoreBtn_Click(object sender, RoutedEventArgs e)
         {
+           
             if (NameInp.Text.Trim() == "" || TypeInp.Text.Trim() == "" || SDTInp.Text.Trim() == "" || DistrictComboBox.SelectedItem.ToString() == "" || CityInp.Text.Trim() == "" || AvatarInp.Text.Trim() == "" || DebtInp.Text.Trim() == "" || EmailInp.Text.Trim() == "")
             {
                 return;
@@ -102,6 +127,40 @@ namespace QUANLYDAILI.Pages
             if (checkType(TypeInp.Text) == false)
             {
                 return;
+            }
+            if (IsValidEmail(EmailInp.Text.Trim()) == false)
+            {
+                MessageBox.Show("Email không phù hợp.");
+                return;
+            }
+            if (IsValidPhoneNumber(SDTInp.Text.Trim()) == false)
+            {
+                MessageBox.Show("SDT không phù hợp.");
+                return;
+            }
+            try
+            {
+                dbConnector.OpenConnection();
+                string fQuery = "SELECT * FROM DaiLy";
+                SqlCommand sql = new SqlCommand();
+                sql.CommandText = fQuery;
+                sql.Connection = dbConnector.sqlCon;
+                SqlDataReader reader2 = sql.ExecuteReader();
+                while(reader2.Read())
+                {
+                    string name = reader2.GetString(reader2.GetOrdinal("TenDaiLy"));
+                    if(name == NameInp.Text.Trim())
+                    {
+                        MessageBox.Show("Tên đại lí đã bị sử dụng.");
+                        return;
+                    }
+                }
+                reader2.Close();
+                dbConnector.CloseConnection();
+            }
+            catch
+            {
+
             }
             string[] word = TypeInp.Text.Trim().Split(' ');
             int typeNum = Int32.Parse(word[1]);

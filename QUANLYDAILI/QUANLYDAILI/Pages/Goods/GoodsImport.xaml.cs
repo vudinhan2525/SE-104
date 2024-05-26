@@ -90,11 +90,11 @@ namespace QUANLYDAILI.Pages
                     command.Parameters.AddWithValue("@SoLuong", item.SoLuong);
                     command.Parameters.AddWithValue("@ThanhTien", thanhtien);
                     int row = command.ExecuteNonQuery();
-                    if(row > 0)
-                    {
-                        MessageBox.Show("Thêm phiếu xuất thành công");
-                    }
+                   
                 }
+               
+                    MessageBox.Show("Thêm phiếu xuất thành công");
+                
             }
             catch (Exception ex)
             {
@@ -145,7 +145,7 @@ namespace QUANLYDAILI.Pages
         }
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.NavigationService.GoBack();
         }
         protected virtual void OnDataSaved()
         {

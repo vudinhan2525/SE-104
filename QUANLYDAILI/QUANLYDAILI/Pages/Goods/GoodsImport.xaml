@@ -10,17 +10,8 @@
     <Page.DataContext>
         <local:GoodsViewModel/>
     </Page.DataContext>
-    <Grid HorizontalAlignment="Stretch" Background="#F0F8FF" Grid.Row ="1">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="auto"/>
-        </Grid.RowDefinitions>
-        <Border x:Name ="ImportPage" Margin="130,80,130,80" Background="#4b5450" Visibility="Visible" CornerRadius="20">
+    
+        <Border x:Name ="ImportPage" Margin="130,80,130,50" Background="#4b5450" Visibility="Visible" CornerRadius="20">
 
             <StackPanel Grid.RowSpan="7" Margin="0,0,0,0" Height="300">
                 <!-- Titles -->
@@ -66,12 +57,12 @@
 
                     <Button Content="Cập Nhật" Click="UpdateButton_Click" Margin="0,0,5,0" Height="30"/>
                     <Button x:Name="SaveBtn" Content="Lưu" Click="SaveButton_Click" Width="100" Height="30" Margin="10,0,0,0"/>
-                    <Button Content="Thoát" Click="ExitButton_Click" Visibility="Collapsed" Height="30" Margin="10,0,0,0"/>
+                    <Button Content="Thoát" Click="ExitButton_Click"  Height="30" Margin="10,0,0,0"/>
 
                 </StackPanel>
 
             </StackPanel>
 
         </Border>
-    </Grid>
+   
 </Page>
