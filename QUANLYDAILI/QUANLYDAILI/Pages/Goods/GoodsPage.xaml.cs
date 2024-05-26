@@ -208,7 +208,7 @@ namespace QUANLYDAILI.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi xóa hàng loạt: " + ex.Message);
+                MessageBox.Show("Lỗi khi xóa hàng hóa! ");
             }
             finally
             {
